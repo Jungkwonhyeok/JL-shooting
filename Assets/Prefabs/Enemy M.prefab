@@ -178,8 +178,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9baea4bb4df554f9d6588efbd7e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  enemyName: M
   speed: 10
   health: 15
   sprites:
   - {fileID: -6845296847206583998, guid: 341c198875cf84b49aa94fa22f67de10, type: 3}
   - {fileID: 8701681782340421770, guid: 341c198875cf84b49aa94fa22f67de10, type: 3}
+  maxShotDelay: 0
+  curShotDelay: 0
+  bulletObjA: {fileID: 0}
+  bulletObjB: {fileID: 0}
+  player: {fileID: 0}

@@ -132,11 +132,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9baea4bb4df554f9d6588efbd7e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  enemyName: L
   speed: 1
   health: 50
   sprites:
   - {fileID: -429285543035514254, guid: e84e697ea93adc94699ab92b59de3d19, type: 3}
   - {fileID: 6117841242725829546, guid: e84e697ea93adc94699ab92b59de3d19, type: 3}
+  maxShotDelay: 3
+  curShotDelay: 0
+  bulletObjA: {fileID: 8651903800703064233, guid: ff1640c6f90494148b8e11dd99c9a235, type: 3}
+  bulletObjB: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}
+  player: {fileID: 0}
 --- !u!58 &-3204758151840761647
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     
     public float speed;
     public float power;
+    public float health;
     public float maxShotDelay;
     public float curShotDelay;
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
+    public GameManager manager;
     void Update()
     {
         Move();
@@ -104,6 +106,10 @@ public class Player : MonoBehaviour
                     isTouchBottom = true;
                     break;
             }
+        }
+        else if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        {
+            
         }
     }
 
