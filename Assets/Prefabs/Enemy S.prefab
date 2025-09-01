@@ -174,7 +174,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 6131514685822276926, guid: 0f561820975d2be40bd1be010195a8fa, type: 3}
   - {fileID: -743462902860950910, guid: 0f561820975d2be40bd1be010195a8fa, type: 3}
-  maxShotDelay: 4
+  maxShotDelay: 2
   curShotDelay: 0
   bulletObjA: {fileID: 8651903800703064233, guid: ff1640c6f90494148b8e11dd99c9a235, type: 3}
   bulletObjB: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}

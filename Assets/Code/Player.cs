@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     
     public float speed;
     public float power;
+    public float maxhealth;
     public float health;
     public float maxShotDelay;
     public float curShotDelay;
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour
     public GameObject bulletObjB;
 
     public GameManager manager;
+
+    void Start()
+    {
+        health = maxhealth;
+    }
     void Update()
     {
         Move();
@@ -107,9 +113,14 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-        else if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "EnemyBullet")
+        else if (collision.gameObject.tag == "Enemy")
         {
-            
+            health -= Time.deltaTime * 10;
+        }
+        else if (collision.gameObject.tag == "EnemyBullet")
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            health -= bullet.dmg;
         }
     }
 
