@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     public bool isTouchBottom;
     
     public float speed;
-    public float power;
+    public int power;
+    public int maxPower;
     public float maxhealth;
     public float health;
     public float maxShotDelay;
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
         if ((isTouchTop && v == 1) || (isTouchBottom && v == -1))
             v = 0;
         Vector3 curPos = transform.position;
-        Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
+        Vector3 nextPos = new Vector3(h, v, 0).normalized * speed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
     }
@@ -121,6 +122,11 @@ public class Player : MonoBehaviour
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             health -= bullet.dmg;
+        }
+
+        else if(collision.gameObject.tag == "Item")
+        {
+            Item item = collision.gameObject.GetComponent<Item>();
         }
     }
 

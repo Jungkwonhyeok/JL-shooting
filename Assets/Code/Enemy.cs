@@ -67,12 +67,21 @@ public class Enemy : MonoBehaviour
 
     void OnHit(int dmg)
     {
+        if(health<=0)
+            return;
+
         health -= dmg;
         spriteRenderer.sprite = sprites[1];
         Invoke("ReturnSprite", 0.1f);
 
         if (health <= 0)
         {
+            int ran = Random.Range(0, 10); //È®·ü
+            if (ran < 3)
+            {
+
+            }
+
             Destroy(gameObject);
         }
     }
