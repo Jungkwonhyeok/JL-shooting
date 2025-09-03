@@ -10,8 +10,7 @@ public class Player : MonoBehaviour
     public bool isTouchBottom;
     
     public float speed;
-    public int power;
-    public int maxPower;
+    public float power;
     public float maxhealth;
     public float health;
     public float maxShotDelay;
@@ -20,7 +19,8 @@ public class Player : MonoBehaviour
     public GameObject bulletObjA;
     public GameObject bulletObjB;
 
-    public GameManager manager;
+    public GameManager gameManager;
+    public ObjectManager objectManager;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         if ((isTouchTop && v == 1) || (isTouchBottom && v == -1))
             v = 0;
         Vector3 curPos = transform.position;
-        Vector3 nextPos = new Vector3(h, v, 0).normalized * speed * Time.deltaTime;
+        Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
     }
@@ -57,14 +57,19 @@ public class Player : MonoBehaviour
         switch (power)
         {
             case 1:
-                GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+                GameObject bullet = objectManager.MakeObj("BulletPlayerA");
+                bullet.transform.position = transform.position;
                 Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
                 rigid.AddForce(Vector2.up*10, ForceMode2D.Impulse);
                 break;
 
             case 2:
-                GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right*0.1f, transform.rotation);
-                GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
+                GameObject bulletR = objectManager.MakeObj("BulletPlayerA");
+                bulletR.transform.position = transform.position + Vector3.right * 0.1f;
+
+                GameObject bulletL = objectManager.MakeObj("BulletPlayerA");
+                bulletL.transform.position = transform.position + Vector3.left * 0.1f;
+
                 Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
                 rigidR.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
@@ -72,9 +77,15 @@ public class Player : MonoBehaviour
                 break;
 
             case 3:
-                GameObject bulletRR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.35f, transform.rotation);
-                GameObject bulletLL = Instantiate(bulletObjB, transform.position, transform.rotation);
-                GameObject bulletCC = Instantiate(bulletObjA, transform.position + Vector3.left * 0.35f, transform.rotation);
+                GameObject bulletRR = objectManager.MakeObj("BulletPlayerA");
+                bulletRR.transform.position = transform.position + Vector3.right * 0.35f;
+
+                GameObject bulletLL = objectManager.MakeObj("BulletPlayerA");
+                bulletLL.transform.position = transform.position + Vector3.left * 0.35f;
+
+                GameObject bulletCC = objectManager.MakeObj("BulletPlayerB");
+                bulletCC.transform.position =   transform.position;
+                
                 Rigidbody2D rigidRR = bulletRR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidCC = bulletCC.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
@@ -122,11 +133,6 @@ public class Player : MonoBehaviour
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             health -= bullet.dmg;
-        }
-
-        else if(collision.gameObject.tag == "Item")
-        {
-            Item item = collision.gameObject.GetComponent<Item>();
         }
     }
 

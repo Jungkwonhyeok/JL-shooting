@@ -1808,15 +1808,15 @@ MonoBehaviour:
   isTouchRight: 0
   isTouchBottom: 0
   speed: 3
-  power: 3
-  maxPower: 4
+  power: 1
   maxhealth: 50
   health: 0
   maxShotDelay: 0.2
   curShotDelay: 0
   bulletObjA: {fileID: 8651903800703064233, guid: e5e5eaa48f9ba9442a951067832b4bcb, type: 3}
   bulletObjB: {fileID: 2429979068503595228, guid: 05344c31c459c3d4394c6b81f8ab4cad, type: 3}
-  manager: {fileID: 0}
+  gameManager: {fileID: 1491850915}
+  objectManager: {fileID: 1167917109}
 --- !u!212 &247992125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7099,6 +7099,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1167917108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167917110}
+  - component: {fileID: 1167917109}
+  m_Layer: 0
+  m_Name: ObjectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1167917109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167917108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d67b251e746d4844a0c4b99255ee038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectManager
+  enemyLPrefab: {fileID: 3780561414291190104, guid: 350704ed246ee844b809e05424e68215, type: 3}
+  enemyMPrefab: {fileID: 490478667888356079, guid: 7c29e8fd64a42724cba27fba30587381, type: 3}
+  enemySPrefab: {fileID: 5214230645768601325, guid: ac7dd47267573ab498d77fba93a42e3c, type: 3}
+  bulletPlayerAPrefab: {fileID: 8651903800703064233, guid: e5e5eaa48f9ba9442a951067832b4bcb, type: 3}
+  bulletPlayerBPrefab: {fileID: 2429979068503595228, guid: 05344c31c459c3d4394c6b81f8ab4cad, type: 3}
+  bulletEnemyAPrefab: {fileID: 8651903800703064233, guid: ff1640c6f90494148b8e11dd99c9a235, type: 3}
+  bulletEnemyBPrefab: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}
+--- !u!4 &1167917110
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167917108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.66094, y: 0.94741, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1189505511
 GameObject:
   m_ObjectHideFlags: 0
@@ -8330,9 +8381,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   enemyObjs:
-  - {fileID: 5214230645768601325, guid: ac7dd47267573ab498d77fba93a42e3c, type: 3}
-  - {fileID: 490478667888356079, guid: 7c29e8fd64a42724cba27fba30587381, type: 3}
-  - {fileID: 3780561414291190104, guid: 350704ed246ee844b809e05424e68215, type: 3}
+  - 
+  - 
+  - 
   spawnPoint:
   - {fileID: 685204244}
   - {fileID: 615861868}
@@ -8345,6 +8396,7 @@ MonoBehaviour:
   - {fileID: 1189505512}
   maxSpawnDelay: 2
   curSpawnDelay: 0
+  objectManager: {fileID: 1167917109}
   player: {fileID: 247992123}
 --- !u!4 &1491850916
 Transform:
@@ -12993,3 +13045,4 @@ SceneRoots:
   - {fileID: 666093829}
   - {fileID: 1491850916}
   - {fileID: 2096924672}
+  - {fileID: 1167917110}
