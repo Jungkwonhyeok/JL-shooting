@@ -1808,7 +1808,8 @@ MonoBehaviour:
   isTouchRight: 0
   isTouchBottom: 0
   speed: 3
-  power: 1
+  power: 3
+  maxPower: 4
   maxhealth: 50
   health: 0
   maxShotDelay: 0.2
