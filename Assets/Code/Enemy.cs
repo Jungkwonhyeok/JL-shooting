@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             int ran = Random.Range(0, 10); //Ȯ��
             if (ran < 3)
             {
@@ -108,6 +109,8 @@ public class Enemy : MonoBehaviour
 
             gameObject.SetActive(false);    
 =======
+=======
+>>>>>>> parent of cf1db57 (아이템 만드는 중)
             Destroy(gameObject);
 >>>>>>> parent of cf1db57 (아이템 만드는 중)
         }
