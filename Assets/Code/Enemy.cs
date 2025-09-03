@@ -93,15 +93,13 @@ public class Enemy : MonoBehaviour
 
     void OnHit(int dmg)
     {
-        if(health<=0)
-            return;
-
         health -= dmg;
         spriteRenderer.sprite = sprites[1];
         Invoke("ReturnSprite", 0.1f);
 
         if (health <= 0)
         {
+<<<<<<< HEAD
             int ran = Random.Range(0, 10); //Ȯ��
             if (ran < 3)
             {
@@ -109,6 +107,9 @@ public class Enemy : MonoBehaviour
             }
 
             gameObject.SetActive(false);    
+=======
+            Destroy(gameObject);
+>>>>>>> parent of cf1db57 (아이템 만드는 중)
         }
     }
 
