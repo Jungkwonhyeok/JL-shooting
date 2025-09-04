@@ -31,7 +31,9 @@ public class Player : MonoBehaviour
     public GameObject bulletObjC;
     public GameObject bulletObjD;
     public GameObject shieldEffect;
-    public GameManager manager;
+
+    public GameManager gameManager;
+    public ObjectManager objectManager;
 
     bool shield;
 
@@ -75,14 +77,18 @@ public class Player : MonoBehaviour
         switch (power)
         {
             case 1:
-                GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+                GameObject bullet = objectManager.MakeObj("BulletPlayerA");
+                bullet.transform.position = transform.position;
+
                 Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
                 rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
                 break;
 
             case 2:
                 GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.1f, transform.rotation);
+
                 GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
+
                 Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
                 rigidR.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
@@ -93,6 +99,7 @@ public class Player : MonoBehaviour
                 GameObject bulletRR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.35f, transform.rotation);
                 GameObject bulletLL = Instantiate(bulletObjB, transform.position, transform.rotation);
                 GameObject bulletCC = Instantiate(bulletObjA, transform.position + Vector3.left * 0.35f, transform.rotation);
+
                 Rigidbody2D rigidRR = bulletRR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidCC = bulletCC.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
@@ -105,6 +112,7 @@ public class Player : MonoBehaviour
                 GameObject bulletRRR = Instantiate(bulletObjC, transform.position + Vector3.right * 0.35f, transform.rotation);
                 GameObject bulletLLL = Instantiate(bulletObjD, transform.position, transform.rotation);
                 GameObject bulletCCC = Instantiate(bulletObjC, transform.position + Vector3.left * 0.35f, transform.rotation);
+
                 Rigidbody2D rigidRRR = bulletRRR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidCCC = bulletCCC.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidLLL = bulletLLL.GetComponent<Rigidbody2D>();
