@@ -79,9 +79,7 @@ public class Enemy : MonoBehaviour
 
             }
 
-
             gameObject.SetActive(false);
-
             Destroy(gameObject);
         }
     }
