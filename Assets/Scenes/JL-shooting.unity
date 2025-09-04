@@ -11868,13 +11868,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d329f546ef3dd334eaef5bb533f57667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectManager
-  enemyLPrefab: {fileID: 0}
-  enemyMPrefab: {fileID: 0}
-  enemySPrefab: {fileID: 0}
-  bulletPlayerAPrefab: {fileID: 0}
-  bulletPlayerBPrefab: {fileID: 0}
-  bulletEnemyAPrefab: {fileID: 0}
-  bulletEnemyBPrefab: {fileID: 0}
+  enemyLPrefab: {fileID: 3780561414291190104, guid: 350704ed246ee844b809e05424e68215, type: 3}
+  enemyMPrefab: {fileID: 490478667888356079, guid: 7c29e8fd64a42724cba27fba30587381, type: 3}
+  enemySPrefab: {fileID: 5214230645768601325, guid: ac7dd47267573ab498d77fba93a42e3c, type: 3}
+  bulletPlayerAPrefab: {fileID: 8651903800703064233, guid: e5e5eaa48f9ba9442a951067832b4bcb, type: 3}
+  bulletPlayerBPrefab: {fileID: 2429979068503595228, guid: 05344c31c459c3d4394c6b81f8ab4cad, type: 3}
+  bulletEnemyAPrefab: {fileID: 8651903800703064233, guid: ff1640c6f90494148b8e11dd99c9a235, type: 3}
+  bulletEnemyBPrefab: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}
 --- !u!1 &1873533392
 GameObject:
   m_ObjectHideFlags: 0
