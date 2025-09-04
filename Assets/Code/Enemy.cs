@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
+    public GameObject ItemHP;
+    public GameObject ItemShield;
+    public GameObject ItemPower;
+    public GameObject ItemTime;
     public GameObject player;
 
     SpriteRenderer spriteRenderer;
@@ -35,14 +39,14 @@ public class Enemy : MonoBehaviour
         if (curShotDelay < maxShotDelay)
             return;
 
-        if(enemyName == "S")
+        if (enemyName == "S")
         {
             GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector3 dirVec = player.transform.position - transform.position;
             rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
         }
-        else if(enemyName == "L")
+        else if (enemyName == "L")
         {
             GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right * 0.3f, transform.rotation);
             GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left * 0.3f, transform.rotation);
@@ -57,7 +61,7 @@ public class Enemy : MonoBehaviour
             rigidL.AddForce(dirVecL.normalized * 4, ForceMode2D.Impulse);
         }
 
-            curShotDelay = 0;
+        curShotDelay = 0;
     }
 
     void Reload()
@@ -65,21 +69,41 @@ public class Enemy : MonoBehaviour
         curShotDelay += Time.deltaTime;
     }
 
-    void OnHit(int dmg)
+    public void OnHit(int dmg)
     {
+        if (health <= 0)
+            return;
+
         health -= dmg;
         spriteRenderer.sprite = sprites[1];
         Invoke("ReturnSprite", 0.1f);
 
         if (health <= 0)
         {
-            int ran = Random.Range(0, 10); //È®·ü
-            if (ran < 3)
+            //Player playerLogic = player.GetComponent<Player>();
+            //playerLogic.score += enemyScore
+            int ran = Random.Range(0, 100);
+            if (ran < 50)
             {
-
+                Debug.Log("Not Item");
+            }
+            else if (ran < 60) 
+            {
+                Instantiate(ItemPower, transform.position, ItemPower.transform.rotation);
+            }
+            else if (ran < 70) 
+            {
+                Instantiate(ItemShield, transform.position, ItemShield.transform.rotation);
+            }
+            else if (ran < 85) 
+            {
+                Instantiate(ItemHP, transform.position, ItemHP.transform.rotation);
+            }
+            else if (ran < 100) 
+            {
+                Instantiate(ItemTime, transform.position, ItemTime.transform.rotation);
             }
 
-            gameObject.SetActive(false);
             Destroy(gameObject);
         }
     }

@@ -389,6 +389,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &73574660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8984897007133426352, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+  m_PrefabInstance: {fileID: 130940517132760373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &73574663 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+  m_PrefabInstance: {fileID: 130940517132760373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &74741221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1807,14 +1817,21 @@ MonoBehaviour:
   isTouchLeft: 0
   isTouchRight: 0
   isTouchBottom: 0
+  score: 0
   speed: 3
   power: 1
+  maxPower: 4
   maxhealth: 50
   health: 0
+  gameTime: 0
+  maxgameTime: 180
   maxShotDelay: 0.2
   curShotDelay: 0
   bulletObjA: {fileID: 8651903800703064233, guid: e5e5eaa48f9ba9442a951067832b4bcb, type: 3}
   bulletObjB: {fileID: 2429979068503595228, guid: 05344c31c459c3d4394c6b81f8ab4cad, type: 3}
+  bulletObjC: {fileID: 8651903800703064233, guid: 550f4a872f046f749b7192d0ec024ed1, type: 3}
+  bulletObjD: {fileID: 2429979068503595228, guid: ac42a02ef92d3a846aab471ce4943d2b, type: 3}
+  shieldEffect: {fileID: 73574660}
   manager: {fileID: 0}
 --- !u!212 &247992125
 SpriteRenderer:
@@ -1886,7 +1903,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 73574663}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &247992127
@@ -1954,7 +1972,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 0.8125}
+    oldSize: {x: 0.75, y: 0.65}
     newSize: {x: 1.6666666, y: 1.4444444}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12979,6 +12997,67 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &130940517132760373
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 247992126}
+    m_Modifications:
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772363945629670775, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984897007133426352, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_Name
+      value: ShieldEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8984897007133426352, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be8a1d0e1ba02ae4f91b4709e678e79e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

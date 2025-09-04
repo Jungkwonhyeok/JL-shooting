@@ -142,6 +142,10 @@ MonoBehaviour:
   curShotDelay: 0
   bulletObjA: {fileID: 8651903800703064233, guid: ff1640c6f90494148b8e11dd99c9a235, type: 3}
   bulletObjB: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}
+  ItemHP: {fileID: 3428695637769383012, guid: cb66d31a16375fa4186c19a2b84a4a7e, type: 3}
+  ItemShield: {fileID: 8949084624514918032, guid: f442bf7c96bd8e54d9f80fa12af627b5, type: 3}
+  ItemPower: {fileID: 6399293332603810548, guid: 2fee62798e02cae4cbddb9271f4b2349, type: 3}
+  ItemTime: {fileID: 134087831385875845, guid: 18cbfd42d3d77eb4db60796962714ecb, type: 3}
   player: {fileID: 0}
 --- !u!58 &-3204758151840761647
 CircleCollider2D:
