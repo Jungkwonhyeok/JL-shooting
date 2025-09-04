@@ -2,18 +2,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public string[] enemyObjs;
+    public GameObject[] enemyObjs;
     public Transform[] spawnPoint;
 
     public float maxSpawnDelay;
     public float curSpawnDelay;
-
-    public ObjectManager objectManager;
-
-    void Awake()
-    {
-        enemyObjs = new string[] { "EnemyL", "EnemyM", "EnemyS" };
-    }
 
     public GameObject player;
     void Update()
@@ -32,8 +25,9 @@ public class GameManager : MonoBehaviour
     {
         int ranEnemy = Random.Range(0, 3);
         int ranPoint = Random.Range(0, 9);
-        GameObject enemy = objectManager.MakeObj(enemyObjs[ranEnemy]);
-        enemy.transform.position = spawnPoint[ranPoint].position;
+        GameObject enemy = Instantiate(enemyObjs[ranEnemy],
+                                       spawnPoint[ranPoint].position,
+                                       spawnPoint[ranPoint].rotation);
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
