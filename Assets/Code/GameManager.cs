@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL" };
+        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL", "EnemyB" };
     }
 
     void Update()
