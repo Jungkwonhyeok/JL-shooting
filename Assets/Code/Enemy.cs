@@ -215,7 +215,7 @@ public class Enemy : MonoBehaviour
         if (enemyName == "S")
         {
             GameObject bullet = objectManager.MakeObj("BulletEnemyA");
-
+            bullet.transform.position = transform.position;
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector3 dirVec = player.transform.position - transform.position;
             rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);

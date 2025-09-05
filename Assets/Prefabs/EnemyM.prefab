@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyName: M
-  speed: 10
+  speed: 5
   health: 15
   sprites:
   - {fileID: -6845296847206583998, guid: 341c198875cf84b49aa94fa22f67de10, type: 3}
