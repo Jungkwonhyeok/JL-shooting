@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.SocialPlatforms.Impl;
@@ -85,9 +86,10 @@ public class Player : MonoBehaviour
                 break;
 
             case 2:
-                GameObject bulletR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.1f, transform.rotation);
-
-                GameObject bulletL = Instantiate(bulletObjA, transform.position + Vector3.left * 0.1f, transform.rotation);
+                GameObject bulletR = objectManager.MakeObj("BulletPlayerA");
+                bulletR.transform.position = transform.position + Vector3.right * 0.1f;
+                GameObject bulletL = objectManager.MakeObj("BulletPlayerA");
+                bulletL.transform.position = transform.position + Vector3.left * 0.1f;
 
                 Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
@@ -96,9 +98,12 @@ public class Player : MonoBehaviour
                 break;
 
             case 3:
-                GameObject bulletRR = Instantiate(bulletObjA, transform.position + Vector3.right * 0.35f, transform.rotation);
-                GameObject bulletLL = Instantiate(bulletObjB, transform.position, transform.rotation);
-                GameObject bulletCC = Instantiate(bulletObjA, transform.position + Vector3.left * 0.35f, transform.rotation);
+                GameObject bulletRR = objectManager.MakeObj("BulletPlayerA");
+                bulletRR.transform.position = transform.position + Vector3.right * 0.35f;
+                GameObject bulletCC = objectManager.MakeObj("BulletPlayerB");
+                bulletCC.transform.position = transform.position;
+                GameObject bulletLL = objectManager.MakeObj("BulletPlayerA");
+                bulletLL.transform.position = transform.position + Vector3.left * 0.35f;
 
                 Rigidbody2D rigidRR = bulletRR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidCC = bulletCC.GetComponent<Rigidbody2D>();
@@ -109,9 +114,12 @@ public class Player : MonoBehaviour
                 break;
 
             case 4:
-                GameObject bulletRRR = Instantiate(bulletObjC, transform.position + Vector3.right * 0.35f, transform.rotation);
-                GameObject bulletLLL = Instantiate(bulletObjD, transform.position, transform.rotation);
-                GameObject bulletCCC = Instantiate(bulletObjC, transform.position + Vector3.left * 0.35f, transform.rotation);
+                GameObject bulletRRR = objectManager.MakeObj("BulletPlayerC");
+                bulletRRR.transform.position = transform.position + Vector3.right * 0.35f;
+                GameObject bulletCCC = objectManager.MakeObj("BulletPlayerD");
+                bulletCCC.transform.position = transform.position;
+                GameObject bulletLLL = objectManager.MakeObj("BulletPlayerC");
+                bulletLLL.transform.position = transform.position + Vector3.left * 0.35f;
 
                 Rigidbody2D rigidRRR = bulletRRR.GetComponent<Rigidbody2D>();
                 Rigidbody2D rigidCCC = bulletCCC.GetComponent<Rigidbody2D>();
@@ -190,7 +198,7 @@ public class Player : MonoBehaviour
                     maxgameTime += 20;
                     break;
             }
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false); ;
         }
     }
 

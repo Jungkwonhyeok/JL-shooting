@@ -7,6 +7,10 @@ public class ObjectManager : MonoBehaviour
     public GameObject enemyLPrefab;
     public GameObject enemyMPrefab;
     public GameObject enemySPrefab;
+    public GameObject itemHPPrefab;
+    public GameObject itemTimePrefab;
+    public GameObject itemPowerPrefab;
+    public GameObject itemShieldPrefab;
     public GameObject bulletPlayerAPrefab;
     public GameObject bulletPlayerBPrefab;
     public GameObject bulletPlayerCPrefab;
@@ -17,6 +21,11 @@ public class ObjectManager : MonoBehaviour
     GameObject[] enemyL;
     GameObject[] enemyM;
     GameObject[] enemyS;
+
+    GameObject[] itemHP;
+    GameObject[] itemTime;
+    GameObject[] itemPower;
+    GameObject[] itemShield;
 
     GameObject[] bulletPlayerA;
     GameObject[] bulletPlayerB;
@@ -32,6 +41,11 @@ public class ObjectManager : MonoBehaviour
         enemyL = new GameObject[10];
         enemyM = new GameObject[10];
         enemyS = new GameObject[10];
+
+        itemHP = new GameObject[20];
+        itemTime = new GameObject[20];
+        itemPower = new GameObject[10];
+        itemShield = new GameObject[10];
 
         bulletPlayerA = new GameObject[100];
         bulletPlayerB = new GameObject[100];
@@ -67,25 +81,70 @@ public class ObjectManager : MonoBehaviour
             enemyS[index].SetActive(false);
         }
 
+        //Item
+        for (int index = 0; index < itemHP.Length; index++)
+        {
+            itemHP[index] = Instantiate(itemHPPrefab);
+            itemHP[index].SetActive(false);
+        }
+
+        for (int index = 0; index < itemPower.Length; index++)
+        {
+            itemPower[index] = Instantiate(itemPowerPrefab);
+            itemPower[index].SetActive(false);
+        }
+
+        for (int index = 0; index < itemShield.Length; index++)
+        {
+            itemShield[index] = Instantiate(itemShieldPrefab);
+            itemShield[index].SetActive(false);
+        }
+
+        for (int index = 0; index < itemTime.Length; index++)
+        {
+            itemTime[index] = Instantiate(itemTimePrefab);
+            itemTime[index].SetActive(false);
+        }
+
+
 
         //Bullet
         for (int index = 0; index < bulletPlayerA.Length; index++)
+        {
             bulletPlayerA[index] = Instantiate(bulletPlayerAPrefab);
+            bulletPlayerA[index].SetActive(false);
+        }
 
         for (int index = 0; index < bulletPlayerB.Length; index++)
+        {
             bulletPlayerB[index] = Instantiate(bulletPlayerBPrefab);
+            bulletPlayerB[index].SetActive(false);
+        }
 
         for (int index = 0; index < bulletPlayerC.Length; index++)
-            bulletPlayerB[index] = Instantiate(bulletPlayerCPrefab);
+        {
+            bulletPlayerC[index] = Instantiate(bulletPlayerCPrefab);
+            bulletPlayerC[index].SetActive(false);
+        }
 
         for (int index = 0; index < bulletPlayerD.Length; index++)
-            bulletPlayerB[index] = Instantiate(bulletPlayerDPrefab);
+        {
+            bulletPlayerD[index] = Instantiate(bulletPlayerDPrefab);
+            bulletPlayerD[index].SetActive(false);
+        }
 
         for (int index = 0; index < bulletEnemyA.Length; index++)
+        {
             bulletEnemyA[index] = Instantiate(bulletEnemyAPrefab);
+            bulletEnemyA[index].SetActive(false);
 
-        for (int index = 0; index < bulletPlayerB.Length; index++)
-            bulletPlayerB[index] = Instantiate(bulletPlayerBPrefab);
+        }
+
+        for (int index = 0; index < bulletEnemyB.Length; index++)
+        {
+            bulletEnemyB[index] = Instantiate(bulletEnemyBPrefab);
+            bulletEnemyB[index].SetActive(false);
+        }
     }
 
     public GameObject MakeObj(string type)
@@ -104,6 +163,18 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "BulletPlayerA":
                 targetPool = bulletPlayerA;
+                break;
+            case "ItemHP":
+                targetPool = itemHP;
+                break;
+            case "ItemTime":
+                targetPool = itemTime;
+                break;
+            case "ItemPower":
+                targetPool = itemPower;
+                break;
+            case "ItemShield":
+                targetPool = itemShield;
                 break;
             case "BulletPlayerB":
                 targetPool = bulletPlayerB;
