@@ -47,7 +47,7 @@ public class ObjectManager : MonoBehaviour
         enemyB = new GameObject[10];
         enemyL = new GameObject[10];
         enemyM = new GameObject[10];
-        enemyS = new GameObject[10];
+        enemyS = new GameObject[20];
 
         itemHP = new GameObject[20];
         itemTime = new GameObject[20];
@@ -59,7 +59,7 @@ public class ObjectManager : MonoBehaviour
         bulletPlayerC = new GameObject[100];
         bulletPlayerD = new GameObject[100];
         bulletEnemyA = new GameObject[100];
-        bulletEnemyB = new GameObject[100];
+        bulletEnemyB = new GameObject[500];
         bulletBossA = new GameObject[50];
         bulletBossB = new GameObject[1000];
 

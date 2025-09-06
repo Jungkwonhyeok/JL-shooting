@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3325987380754355170}
   - component: {fileID: 5136455691351638576}
   - component: {fileID: 6590794100605872223}
+  - component: {fileID: 1063340421363864389}
   m_Layer: 0
   m_Name: EnemyS
   m_TagString: Enemy
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyName: S
   speed: 3
-  health: 3
+  health: 5
   sprites:
   - {fileID: 6131514685822276926, guid: 0f561820975d2be40bd1be010195a8fa, type: 3}
   - {fileID: -743462902860950910, guid: 0f561820975d2be40bd1be010195a8fa, type: 3}
@@ -184,3 +185,28 @@ MonoBehaviour:
   itemTime: {fileID: 134087831385875845, guid: 18cbfd42d3d77eb4db60796962714ecb, type: 3}
   player: {fileID: 0}
   objectManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
+--- !u!95 &1063340421363864389
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214230645768601325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ce657f1474ff1d4a9caedd85a7c6a53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

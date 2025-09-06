@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4355831928828862927}
   - component: {fileID: 4767956421241255863}
   - component: {fileID: 6685459312308781020}
+  - component: {fileID: -6260474364377724558}
   m_Layer: 0
   m_Name: EnemyM
   m_TagString: Enemy
@@ -194,3 +195,28 @@ MonoBehaviour:
   itemTime: {fileID: 134087831385875845, guid: 18cbfd42d3d77eb4db60796962714ecb, type: 3}
   player: {fileID: 0}
   objectManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
+--- !u!95 &-6260474364377724558
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490478667888356079}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9de0b7690bc408544beb3184e6d93826, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

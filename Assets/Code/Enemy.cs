@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         rigid.linearVelocity = Vector2.down * speed;
 
-        if(enemyName == "Space orchestrator")
+        if(enemyName == "B")
             anim = GetComponent<Animator>();
     }
 
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
                 health = 15;
                 break;
             case "S":
-                health = 3;
+                health = 5;
                 break;
         }
     }
@@ -109,16 +109,16 @@ public class Enemy : MonoBehaviour
         Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
         Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
 
-        rigidR.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
-        rigidRR.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
-        rigidL.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
-        rigidLL.AddForce(Vector2.down * 8, ForceMode2D.Impulse);
+        rigidR.AddForce(Vector2.down * 4, ForceMode2D.Impulse);
+        rigidRR.AddForce(Vector2.down * 4, ForceMode2D.Impulse);
+        rigidL.AddForce(Vector2.down * 4, ForceMode2D.Impulse);
+        rigidLL.AddForce(Vector2.down * 4, ForceMode2D.Impulse);
 
         //#. Pattern Counting
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireForeward", 2);
+            Invoke("FireForward", 2);
         else
             Invoke("Think", 3);
     }
@@ -129,13 +129,13 @@ public class Enemy : MonoBehaviour
         for (int index = 0; index < 5; index++)
         {
             GameObject bullet = objectManager.MakeObj("BulletEnemyB");
+            bullet.transform.position = transform.position;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = player.transform.position - transform.position;
             Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 2f));
             dirVec += ranVec;
-            rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
-
+            rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
         }
         
         //#.Pattern Counting
@@ -170,14 +170,14 @@ public class Enemy : MonoBehaviour
     void FireAround()
     {
         //#. Fire Around
-        int roundNumA = 50;
-        int roundNumB = 40;
+        int roundNumA = 40;
+        int roundNumB = 30;
         int roundNum = curPatternCount % 2 == 0 ? roundNumA : roundNumB;
 
 
         for (int index=0; index < roundNumA; index++)
         {
-            GameObject bullet = objectManager.MakeObj("BulletEnemyB");
+            GameObject bullet = objectManager.MakeObj("BulletBossB");
             bullet.transform.position = transform.position;
             bullet.transform.rotation = Quaternion.identity;
 
@@ -200,7 +200,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (enemyName == "Space orchestrator")
+        if (enemyName == "B")
             return;
 
         Fire();
@@ -251,7 +251,7 @@ public class Enemy : MonoBehaviour
             return;
 
         health -= dmg;
-        if(enemyName == "Space orchestrator")
+        if(enemyName == "B")
         {
             anim.SetTrigger("OnHit");
         }
@@ -262,28 +262,26 @@ public class Enemy : MonoBehaviour
 
         }
 
-            
-
         if (health <= 0)
         {
             //Player playerLogic = player.GetComponent<Player>();
             //playerLogic.score += enemyScore
-            int ran = enemyName == "Space orchestrator" ? 0 :  Random.Range(0, 100);
-            if (ran < 50)
+            int ran = enemyName == "B" ? 0 :  Random.Range(0, 100);
+            if (ran < 40)
             {
                 Debug.Log("Not Item");
             }
-            else if (ran < 60) 
+            else if (ran < 50) 
             {
                 GameObject itemPower = objectManager.MakeObj("ItemPower");
                 itemPower.transform.position = transform.position;
             }
-            else if (ran < 70) 
+            else if (ran < 60) 
             {
                 GameObject itemShield = objectManager.MakeObj("ItemShield");
                 itemShield.transform.position = transform.position;
             }
-            else if (ran < 85) 
+            else if (ran < 80) 
             {
                 GameObject itemHP = objectManager.MakeObj("ItemHP");
                 itemHP.transform.position = transform.position;
@@ -306,7 +304,7 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BorderBullet" && enemyName != "Space orchestrator")
+        if (collision.gameObject.tag == "BorderBullet" && enemyName != "B")
         {
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;

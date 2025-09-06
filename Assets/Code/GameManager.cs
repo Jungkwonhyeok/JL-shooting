@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public string[] enemyObjs;
     public Transform[] spawnPoint;
 
-    public float maxSpawnDelay;
     public float nextSpawnDelay;
     public float curSpawnDelay;
 
@@ -21,27 +20,23 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     void Awake()
     {
-<<<<<<< Updated upstream
-        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL", "EnemyB" };
-=======
         spawnList = new List<Spawn>();
-        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL" };
+        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL","EnemyB" };
         ReadSpawnFile();
->>>>>>> Stashed changes
     }
 
     void ReadSpawnFile()
     {
-        //ÔøΩÔøΩÔøΩÔøΩ ÔøΩ ±ÔøΩ»≠
+        //∫Øºˆ √ ±‚»≠
         spawnList.Clear();
         spawnIndex = 0;
         spawnEnd = false;
 
-        //ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩ–±ÔøΩ
+        //Ω∫∆˘ ∆ƒ¿œ ¿–±‚
         TextAsset textFile = Resources.Load("Stage 1") as TextAsset;
         StringReader stringReader = new StringReader(textFile.text);
 
-        //ÔøΩÔøΩ ÔøΩŸæÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
+        //«— ¡Ÿæø µ•¿Ã≈Õ ¿˙¿Â
         while (stringReader != null)
         {
             string line = stringReader.ReadLine();
@@ -50,7 +45,7 @@ public class GameManager : MonoBehaviour
             if (line == null)
                 break;
 
-            //ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
+            //∏ÆΩ∫∆˘ µ•¿Ã≈Õ ª˝º∫
             Spawn spawnData = new Spawn();
             spawnData.delay = float.Parse(line.Split(',')[0]);
             spawnData.type = line.Split(',')[1];
@@ -58,10 +53,10 @@ public class GameManager : MonoBehaviour
             spawnList.Add(spawnData);
         }
 
-        //ÔøΩÿΩÔøΩ∆Æ ÔøΩÔøΩÔøΩÔøΩ ÔøΩ›±ÔøΩ
+        //≈ÿΩ∫∆Æ ∆ƒ¿œ ¥›±‚
         stringReader.Close();
 
-        //√≥ÔøΩÔøΩÔøΩÔøΩ¬∞ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
+        //√≥º≠π¯¬∞ Ω∫∆˘ µÙ∑π¿Ã ¿˚øÎ
         nextSpawnDelay = spawnList[0].delay;
 
     }
@@ -69,21 +64,15 @@ public class GameManager : MonoBehaviour
     {
         curSpawnDelay += Time.deltaTime;
 
-        if(curSpawnDelay > maxSpawnDelay)
         if(curSpawnDelay > nextSpawnDelay && !spawnEnd)
         {
             SpawnEnemy();
-            maxSpawnDelay = Random.Range(0.5f, 3f);
             curSpawnDelay = 0;
         }
     }
 
     void SpawnEnemy()
     {
-        int ranEnemy = Random.Range(0, 3);
-        int ranPoint = Random.Range(0, 9);
-        GameObject enemy = objectManager.MakeObj(enemyObjs[ranEnemy]);
-        enemy.transform.position = spawnPoint[ranPoint].position;
         int enemyIndex = 0;
         switch (spawnList[spawnIndex].type)
         {
@@ -96,6 +85,9 @@ public class GameManager : MonoBehaviour
             case "L":
                 enemyIndex = 2;
                 break;
+            case "B":
+                enemyIndex = 3;
+                break;
         }
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
@@ -106,13 +98,11 @@ public class GameManager : MonoBehaviour
         enemyLogic.player = player;
         enemyLogic.objectManager = objectManager;
 
-        if (ranPoint == 5 || ranPoint == 6)
         if (enemyPoint == 5 || enemyPoint == 6)
         {
             enemy.transform.Rotate(Vector3.back * 90);
             rigid.linearVelocity = new Vector2(enemyLogic.speed*(-1), -1);
         }
-        else if (ranPoint == 7 || ranPoint == 8)
         else if (enemyPoint == 7 || enemyPoint == 8)
         {
             enemy.transform.Rotate(Vector3.forward * 90);
@@ -123,6 +113,7 @@ public class GameManager : MonoBehaviour
             rigid.linearVelocity =new Vector2(0, enemyLogic.speed*(-1));
         }
 
+        //∏ÆΩ∫∆Æ ¿Œµ¶Ω∫ ¡ı∞°
         spawnIndex++;
         if(spawnIndex == spawnList.Count)
         {
@@ -130,6 +121,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        //¥Ÿ¿Ω ∏ÆΩ∫∆˘ µÙ∑π¿Ã ∞ªΩ≈
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
 }

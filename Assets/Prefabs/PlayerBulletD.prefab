@@ -178,4 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44610ee10417a8f41bfdbcf6bc727737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  dmg: 3
+  dmg: 5
+  isRotate: 0

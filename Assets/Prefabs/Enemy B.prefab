@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9baea4bb4df554f9d6588efbd7e1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  enemyName: Space orchestrator
+  enemyName: B
   speed: 1.5
   health: 3000
   sprites: []
@@ -206,6 +206,6 @@ MonoBehaviour:
   itemTime: {fileID: 0}
   player: {fileID: 0}
   objectManager: {fileID: 0}
-  patternIndex: 0
+  patternIndex: -1
   curPatternCount: 0
   maxPatternCount: 0200000003000000640000000a000000

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7255649386521775482}
   - component: {fileID: 4215888690832658548}
   - component: {fileID: -3204758151840761647}
+  - component: {fileID: -2869839225470467398}
   m_Layer: 0
   m_Name: EnemyL
   m_TagString: Enemy
@@ -148,6 +149,9 @@ MonoBehaviour:
   itemTime: {fileID: 134087831385875845, guid: 18cbfd42d3d77eb4db60796962714ecb, type: 3}
   player: {fileID: 0}
   objectManager: {fileID: 0}
+  patternIndex: 0
+  curPatternCount: 0
+  maxPatternCount: 
 --- !u!58 &-3204758151840761647
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -184,3 +188,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
+--- !u!95 &-2869839225470467398
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3780561414291190104}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e86122eccd9cf3941904727185f22986, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
