@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         spawnList = new List<Spawn>();
+<<<<<<< Updated upstream
         enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL","EnemyB" };
+=======
+        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL" };
+>>>>>>> Stashed changes
         ReadSpawnFile();
     }
 
@@ -85,9 +89,12 @@ public class GameManager : MonoBehaviour
             case "L":
                 enemyIndex = 2;
                 break;
+<<<<<<< Updated upstream
             case "B":
                 enemyIndex = 3;
                 break;
+=======
+>>>>>>> Stashed changes
         }
         int enemyPoint = spawnList[spawnIndex].point;
         GameObject enemy = objectManager.MakeObj(enemyObjs[enemyIndex]);
