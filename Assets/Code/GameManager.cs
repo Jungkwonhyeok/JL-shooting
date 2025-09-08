@@ -128,4 +128,10 @@ public class GameManager : MonoBehaviour
         //다음 리스폰 딜레이 갱신
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
+
+    void CallDie(Vector3 pos, string type)
+    {
+        GameObject die = objectManager.MakeObj("Die");
+        Die dieLogic = die.GetComponent<>();
+    }
 }
