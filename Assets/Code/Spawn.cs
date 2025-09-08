@@ -6,4 +6,3 @@ public class Spawn
     public string type;
     public int point;
 }
-

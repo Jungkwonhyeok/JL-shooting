@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;
 
+    public float boomCooldown;
+
     public GameObject bulletObjA;
     public GameObject bulletObjB;
     public GameObject bulletObjC;
@@ -37,10 +39,12 @@ public class Player : MonoBehaviour
     public ObjectManager objectManager;
 
     bool shield;
+    float lastBoomTime;
 
     void Start()
     {
         health = maxhealth;
+        lastBoomTime = -boomCooldown;
     }
     void Update()
     {
@@ -52,7 +56,14 @@ public class Player : MonoBehaviour
         {
             health = maxhealth;
         }
-    }
+
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown)
+        {
+            Boom();
+            lastBoomTime = Time.time;
+        }
+    
+}
 
     void Move()
     {
@@ -235,5 +246,21 @@ public class Player : MonoBehaviour
     {
         shieldEffect.SetActive(false);
         shield = false;
+    }
+
+    void Boom()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int index=0; index < enemies.Length; index++)
+        {
+            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+            enemyLogic.OnHit(100);
+        }
+
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        for (int index = 0; index < bullets.Length; index++)
+        {
+            bullets[index].SetActive(false);
+        }
     }
 }

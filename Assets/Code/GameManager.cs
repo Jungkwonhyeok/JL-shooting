@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
+        enemyLogic.gameManager = this;
         enemyLogic.objectManager = objectManager;
 
         if (enemyPoint == 5 || enemyPoint == 6)
@@ -129,9 +130,12 @@ public class GameManager : MonoBehaviour
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
 
-    void CallDie(Vector3 pos, string type)
+    public void CallDie(Vector3 pos, string type)
     {
         GameObject die = objectManager.MakeObj("Die");
-        Die dieLogic = die.GetComponent<>();
+        Die dieLogic = die.GetComponent<Die>();
+
+        die.transform.position = pos;
+        dieLogic.StartDie(type);
     }
 }

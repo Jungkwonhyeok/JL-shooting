@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     public GameObject itemPower;
     public GameObject itemTime;
     public GameObject player;
+    public GameManager gameManager;
     public ObjectManager objectManager;
 
     SpriteRenderer spriteRenderer;
@@ -262,7 +263,14 @@ public class Enemy : MonoBehaviour
 
         }
 
-        if (health <= 0)
+        if (health <= 0 && enemyName == "B")
+        {
+            CancelInvoke();
+            anim.SetTrigger("Die");
+            Invoke("Disable", 1f);
+        }
+
+        else if (health <= 0)
         {
             //Player playerLogic = player.GetComponent<Player>();
             //playerLogic.score += enemyScore
@@ -294,6 +302,7 @@ public class Enemy : MonoBehaviour
 
             gameObject.SetActive(false);
             transform.rotation = Quaternion.identity;
+            gameManager.CallDie(transform.position, enemyName);
         }
     }
 
@@ -318,4 +327,8 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void Disable()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -205,6 +205,7 @@ MonoBehaviour:
   itemPower: {fileID: 0}
   itemTime: {fileID: 0}
   player: {fileID: 0}
+  gameManager: {fileID: 0}
   objectManager: {fileID: 0}
   patternIndex: -1
   curPatternCount: 0
