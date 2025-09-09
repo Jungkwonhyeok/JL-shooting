@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.Progress;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +28,16 @@ public class Player : MonoBehaviour
     public float maxShotDelay;
     public float curShotDelay;
 
+    public float boomCooldown;
+    public float focusCooldown;
+
+    public static bool isFocus;
+    public static float focusOrigin = 1f;
+    public float focusTime = 3f;
+    public float focusSlow = 0.5f;
+    public int BoomCount = 3;
+    public int FocusCount = 5;
+
     public GameObject bulletObjA;
     public GameObject bulletObjB;
     public GameObject bulletObjC;
@@ -37,10 +48,15 @@ public class Player : MonoBehaviour
     public ObjectManager objectManager;
 
     bool shield;
+    bool isFocusing;
+    float lastBoomTime;
+    float lastFocusTime;
+
 
     void Start()
     {
         health = maxhealth;
+        lastBoomTime = -boomCooldown;
     }
     void Update()
     {
@@ -52,6 +68,21 @@ public class Player : MonoBehaviour
         {
             health = maxhealth;
         }
+
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown && BoomCount != 0)
+        {
+            BoomCount--;
+            Boom();
+            lastBoomTime = Time.time;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && !isFocusing && Time.time - lastFocusTime >= focusCooldown && FocusCount != 0)
+        {
+            FocusCount--;
+            StartCoroutine(FocusMode());
+            lastFocusTime = Time.time;
+        }
+
     }
 
     void Move()
@@ -236,4 +267,76 @@ public class Player : MonoBehaviour
         shieldEffect.SetActive(false);
         shield = false;
     }
+
+    void Boom()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int index = 0; index < enemies.Length; index++)
+        {
+            Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
+            enemyLogic.OnHit(100);
+        }
+
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        for (int index = 0; index < bullets.Length; index++)
+        {
+            bullets[index].SetActive(false);
+        }
+    }
+
+    IEnumerator FocusMode()
+    {
+        isFocusing = true;
+        isFocus = true;
+        focusOrigin = focusSlow;
+
+        // 이미 있는 애들 느리게 (곱하기)
+        ApplyFocusToExistingMultiply(focusSlow);
+
+        yield return new WaitForSeconds(focusTime);
+
+        // 복구 (나누기)
+        ApplyFocusToExistingDivide(focusSlow);
+
+        isFocus = false;
+        focusOrigin = 1f;
+        isFocusing = false;
+    }
+
+    void ApplyFocusToExistingMultiply(float origin)
+    {
+        if (origin <= 0f) return;
+
+        foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Rigidbody2D rb = e.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity *= origin;
+        }
+
+        foreach (var b in GameObject.FindGameObjectsWithTag("EnemyBullet"))
+        {
+            Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity *= origin;
+        }
+    }
+
+    void ApplyFocusToExistingDivide(float origin)
+    {
+        if (origin <= 0f) return;
+
+        foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Rigidbody2D rb = e.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity /= origin;
+        }
+
+        foreach (var b in GameObject.FindGameObjectsWithTag("EnemyBullet"))
+        {
+            Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity /= origin;
+        }
+    }
+
+
+
 }
