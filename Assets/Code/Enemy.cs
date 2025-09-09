@@ -58,8 +58,6 @@ public class Enemy : MonoBehaviour
        
         rigid.linearVelocity = Vector2.down * speed * Player.focusOrigin;
 
-        if (Player.isFocus)
-            rigid.linearVelocity *= Player.focusOrigin;
     }
 
     void Stop()

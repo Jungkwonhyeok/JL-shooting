@@ -29,14 +29,14 @@ public class Player : MonoBehaviour
     public float curShotDelay;
 
     public float boomCooldown;
+    public float focusCooldown;
 
     public static bool isFocus;       
     public static float focusOrigin = 1f;
     public float focusTime = 3f; 
-    public float focusSlow = 0.3f;  
-
-    bool isFocusing;
-
+    public float focusSlow = 0.5f;
+    public int BoomCount = 3;
+    public int FocusCount = 5;
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
@@ -48,7 +48,10 @@ public class Player : MonoBehaviour
     public ObjectManager objectManager;
 
     bool shield;
+    bool isFocusing;
     float lastBoomTime;
+    float lastFocusTime;
+
 
     void Start()
     {
@@ -66,15 +69,18 @@ public class Player : MonoBehaviour
             health = maxhealth;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown)
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown && BoomCount != 0)
         {
+            BoomCount--;
             Boom();
             lastBoomTime = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isFocusing)
+        if (Input.GetKeyDown(KeyCode.E) && !isFocusing && Time.time - lastFocusTime >= focusCooldown && FocusCount != 0)
         {
+            FocusCount--;
             StartCoroutine(FocusMode());
+            lastFocusTime = Time.time;
         }
 
     }

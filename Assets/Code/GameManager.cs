@@ -102,20 +102,21 @@ public class GameManager : MonoBehaviour
         enemyLogic.player = player;
         enemyLogic.gameManager = this;
         enemyLogic.objectManager = objectManager;
+        float speed = enemyLogic.speed * Player.focusOrigin;
 
         if (enemyPoint == 5 || enemyPoint == 6)
         {
             enemy.transform.Rotate(Vector3.back * 90);
-            rigid.linearVelocity = new Vector2(enemyLogic.speed*(-1), -1);
+            rigid.linearVelocity = new Vector2(-speed, -1 * Player.focusOrigin);
         }
         else if (enemyPoint == 7 || enemyPoint == 8)
         {
             enemy.transform.Rotate(Vector3.forward * 90);
-            rigid.linearVelocity = new Vector2(enemyLogic.speed, -1);
+            rigid.linearVelocity = new Vector2(speed, -1 * Player.focusOrigin);
         }
         else
         {
-            rigid.linearVelocity =new Vector2(0, enemyLogic.speed*(-1));
+            rigid.linearVelocity = new Vector2(0, -speed);
         }
 
         //리스트 인덱스 증가
