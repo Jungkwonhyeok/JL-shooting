@@ -1827,12 +1827,6 @@ MonoBehaviour:
   maxgameTime: 180
   maxShotDelay: 0.2
   curShotDelay: 0
-  boomCooldown: 20
-  focusCooldown: 10
-  focusTime: 3
-  focusSlow: 0.3
-  BoomCount: 3
-  FocusCount: 5
   bulletObjA: {fileID: 8651903800703064233, guid: e5e5eaa48f9ba9442a951067832b4bcb, type: 3}
   bulletObjB: {fileID: 2429979068503595228, guid: 05344c31c459c3d4394c6b81f8ab4cad, type: 3}
   bulletObjC: {fileID: 8651903800703064233, guid: 550f4a872f046f749b7192d0ec024ed1, type: 3}
@@ -6260,7 +6254,6 @@ MonoBehaviour:
   bulletEnemyBPrefab: {fileID: 8651903800703064233, guid: 95b2077474473a948b2a7db63a952ea6, type: 3}
   bulletBossAPrefab: {fileID: 8651903800703064233, guid: 354e5372d3a787b4283bae205177bde7, type: 3}
   bulletBossBPrefab: {fileID: 8651903800703064233, guid: 4a865f1f7685081499ff4a7e74a5635a, type: 3}
-  diePrefab: {fileID: 2620978426153364258, guid: 54268b7f9721c424fa62d784df93a68a, type: 3}
 --- !u!4 &1031682086
 Transform:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         spawnList = new List<Spawn>();
 
-        enemyObjs = new string[] {"EnemyS", "EnemyM" , "EnemyL","EnemyB" };
+        enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
         ReadSpawnFile();
     }
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         while (stringReader != null)
         {
             string line = stringReader.ReadLine();
-            
+
 
             if (line == null)
                 break;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     {
         curSpawnDelay += Time.deltaTime;
 
-        if(curSpawnDelay > nextSpawnDelay && !spawnEnd)
+        if (curSpawnDelay > nextSpawnDelay && !spawnEnd)
         {
             SpawnEnemy();
             curSpawnDelay = 0;
@@ -100,28 +100,26 @@ public class GameManager : MonoBehaviour
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player;
-        enemyLogic.gameManager = this;
         enemyLogic.objectManager = objectManager;
-        float speed = enemyLogic.speed * Player.focusOrigin;
 
         if (enemyPoint == 5 || enemyPoint == 6)
         {
             enemy.transform.Rotate(Vector3.back * 90);
-            rigid.linearVelocity = new Vector2(-speed, -1 * Player.focusOrigin);
+            rigid.linearVelocity = new Vector2(enemyLogic.speed * (-1), -1);
         }
         else if (enemyPoint == 7 || enemyPoint == 8)
         {
             enemy.transform.Rotate(Vector3.forward * 90);
-            rigid.linearVelocity = new Vector2(speed, -1 * Player.focusOrigin);
+            rigid.linearVelocity = new Vector2(enemyLogic.speed, -1);
         }
         else
         {
-            rigid.linearVelocity = new Vector2(0, -speed);
+            rigid.linearVelocity = new Vector2(0, enemyLogic.speed * (-1));
         }
 
         //리스트 인덱스 증가
         spawnIndex++;
-        if(spawnIndex == spawnList.Count)
+        if (spawnIndex == spawnList.Count)
         {
             spawnEnd = true;
             return;
@@ -129,14 +127,5 @@ public class GameManager : MonoBehaviour
 
         //다음 리스폰 딜레이 갱신
         nextSpawnDelay = spawnList[spawnIndex].delay;
-    }
-
-    public void CallDie(Vector3 pos, string type)
-    {
-        GameObject die = objectManager.MakeObj("Die");
-        Die dieLogic = die.GetComponent<Die>();
-
-        die.transform.position = pos;
-        dieLogic.StartDie(type);
     }
 }
