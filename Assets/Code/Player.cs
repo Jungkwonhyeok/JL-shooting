@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.SocialPlatforms.Impl;
 using static UnityEditor.Progress;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class Player : MonoBehaviour
     public float curShotDelay;
 
     public float boomCooldown;
+
+    public static bool isFocus;       
+    public static float focusOrigin = 1f;
+    public float focusTime = 3f; 
+    public float focusSlow = 0.3f;  
+
+    bool isFocusing;
+
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
@@ -62,8 +71,13 @@ public class Player : MonoBehaviour
             Boom();
             lastBoomTime = Time.time;
         }
-    
-}
+
+        if (Input.GetKeyDown(KeyCode.E) && !isFocusing)
+        {
+            StartCoroutine(FocusMode());
+        }
+
+    }
 
     void Move()
     {
@@ -263,4 +277,60 @@ public class Player : MonoBehaviour
             bullets[index].SetActive(false);
         }
     }
+
+    IEnumerator FocusMode()
+    {
+        isFocusing = true;
+        isFocus = true;
+        focusOrigin = focusSlow;
+
+        // 이미 있는 애들 느리게 (곱하기)
+        ApplyFocusToExistingMultiply(focusSlow);
+
+        yield return new WaitForSeconds(focusTime);
+
+        // 복구 (나누기)
+        ApplyFocusToExistingDivide(focusSlow);
+
+        isFocus = false;
+        focusOrigin = 1f;
+        isFocusing = false;
+    }
+
+    void ApplyFocusToExistingMultiply(float origin)
+    {
+        if (origin <= 0f) return;
+
+        foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Rigidbody2D rb = e.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity *= origin;
+        }
+
+        foreach (var b in GameObject.FindGameObjectsWithTag("EnemyBullet"))
+        {
+            Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity *= origin;
+        }
+    }
+
+    void ApplyFocusToExistingDivide(float origin)
+    {
+        if (origin <= 0f) return;
+
+        foreach (var e in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Rigidbody2D rb = e.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity /= origin;
+        }
+
+        foreach (var b in GameObject.FindGameObjectsWithTag("EnemyBullet"))
+        {
+            Rigidbody2D rb = b.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity /= origin;
+        }
+    }
+
+
+
 }
