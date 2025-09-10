@@ -7,6 +7,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
 
     public bool isTouchTop;
     public bool isTouchLeft;
@@ -16,11 +17,11 @@ public class Player : MonoBehaviour
     public int score;
     public float speed;
 
-    public static int power;
+    public int power;
     public int maxPower;
 
-    public static float maxhealth;
-    public static float health;
+    public float maxhealth;
+    public float health;
 
     public float gameTime;
     public float maxgameTime;
@@ -31,8 +32,8 @@ public class Player : MonoBehaviour
     public float boomCooldown;
     public float focusCooldown;
 
-    public static bool isFocus;
-    public static float focusOrigin = 1f;
+    public bool isFocus;
+    public float focusOrigin = 1f;
     public float focusTime = 3f;
     public float focusSlow = 0.5f;
     public int BoomCount = 3;
@@ -47,12 +48,17 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
     public ObjectManager objectManager;
 
+    float time;
     bool shield;
     bool isFocusing;
     float lastBoomTime;
     float lastFocusTime;
 
 
+    void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         health = maxhealth;
@@ -60,7 +66,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        gameTime += Time.deltaTime;
+        time += Time.deltaTime;
+        gameTime = maxgameTime - time;
         Move();
         Fire();
         Reload();
@@ -188,6 +195,7 @@ public class Player : MonoBehaviour
                     break;
                 case "Bottom":
                     isTouchBottom = true;
+                    health = 0;
                     break;
             }
         }
@@ -212,7 +220,7 @@ public class Player : MonoBehaviour
             {
                 case "Power":
                     if (power == maxPower)
-                        score += 1;
+                        score += 500;
                     else
                         power++;
                     break;
@@ -220,7 +228,7 @@ public class Player : MonoBehaviour
                     if (health == maxhealth)
                         return;
                     else
-                        health += 10;
+                        health += 5;
                     break;
                 case "Shield":
                     OnShield();

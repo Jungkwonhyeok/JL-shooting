@@ -102,17 +102,17 @@ public class GameManager : MonoBehaviour
         enemyLogic.player = player;
         enemyLogic.gameManager = this;
         enemyLogic.objectManager = objectManager;
-        float speed = enemyLogic.speed * Player.focusOrigin;
+        float speed = enemyLogic.speed * Player.instance.focusOrigin;
 
         if (enemyPoint == 5 || enemyPoint == 6)
         {
             enemy.transform.Rotate(Vector3.back * 90);
-            rigid.linearVelocity = new Vector2(-speed, -1 * Player.focusOrigin);
+            rigid.linearVelocity = new Vector2(-speed, -1 * Player.instance.focusOrigin);
         }
         else if (enemyPoint == 7 || enemyPoint == 8)
         {
             enemy.transform.Rotate(Vector3.forward * 90);
-            rigid.linearVelocity = new Vector2(speed, -1 * Player.focusOrigin);
+            rigid.linearVelocity = new Vector2(speed, -1 * Player.instance.focusOrigin);
         }
         else
         {

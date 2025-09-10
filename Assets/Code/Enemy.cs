@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static Enemy Instance;
+
     public string enemyName;
+    public int enemyScore;
     public float speed;
     public int health;
-    public static int MaxBhealth;
-    public static int Bhealth;
+    public int MaxBhealth;
+    public int Bhealth;
     public Sprite[] sprites;
 
     public float maxShotDelay;
@@ -44,7 +47,7 @@ public class Enemy : MonoBehaviour
         switch(enemyName)
         {
             case "B":
-                MaxBhealth = 3000;
+                MaxBhealth = 2000;
                 Bhealth = MaxBhealth;
                 Invoke("Stop", 2);
                 break;
@@ -59,7 +62,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        rigid.linearVelocity = Vector2.down * speed * Player.focusOrigin;
+        rigid.linearVelocity = Vector2.down * speed * Player.instance.focusOrigin;
 
     }
 
@@ -115,10 +118,10 @@ public class Enemy : MonoBehaviour
         Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
         Rigidbody2D rigidLL = bulletLL.GetComponent<Rigidbody2D>();
 
-        rigidR.AddForce(Vector2.down * 4 * Player.focusOrigin, ForceMode2D.Impulse);
-        rigidRR.AddForce(Vector2.down * 4 * Player.focusOrigin, ForceMode2D.Impulse);
-        rigidL.AddForce(Vector2.down * 4 * Player.focusOrigin, ForceMode2D.Impulse);
-        rigidLL.AddForce(Vector2.down * 4 * Player.focusOrigin, ForceMode2D.Impulse);
+        rigidR.AddForce(Vector2.down * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
+        rigidRR.AddForce(Vector2.down * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
+        rigidL.AddForce(Vector2.down * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
+        rigidLL.AddForce(Vector2.down * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
 
         //#. Pattern Counting
@@ -142,7 +145,7 @@ public class Enemy : MonoBehaviour
             Vector2 dirVec = player.transform.position - transform.position;
             Vector2 ranVec = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(0f, 2f));
             dirVec += ranVec;
-            rigid.AddForce(dirVec.normalized * 3 * Player.focusOrigin, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 3 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
         }
 
@@ -164,7 +167,7 @@ public class Enemy : MonoBehaviour
 
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 10 * curPatternCount / maxPatternCount[patternIndex]), -1);
-        rigid.AddForce(dirVec.normalized * 5 * Player.focusOrigin, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * 5 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
 
         //#. Pattern Counting
@@ -192,7 +195,7 @@ public class Enemy : MonoBehaviour
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * index / roundNumA), Mathf.Sin(Mathf.PI * 2 * index / roundNumA));
-            rigid.AddForce(dirVec.normalized * 2 * Player.focusOrigin, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 2 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
             Vector3 rotVec = Vector3.forward * 360 * index / roundNumA + Vector3.forward * 90;
             bullet.transform.Rotate(rotVec);
@@ -228,7 +231,7 @@ public class Enemy : MonoBehaviour
             bullet.transform.position = transform.position;
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
             Vector3 dirVec = player.transform.position - transform.position;
-            rigid.AddForce(dirVec.normalized * 3 * Player.focusOrigin, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 3 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
         }
         else if (enemyName == "L")
@@ -244,8 +247,8 @@ public class Enemy : MonoBehaviour
             Vector3 dirVecR = player.transform.position - (transform.position + Vector3.right * 0.3f);
             Vector3 dirVecL = player.transform.position - (transform.position + Vector3.left * 0.3f);
 
-            rigidR.AddForce(dirVecR.normalized * 4 * Player.focusOrigin, ForceMode2D.Impulse);
-            rigidL.AddForce(dirVecL.normalized * 4 * Player.focusOrigin, ForceMode2D.Impulse);
+            rigidR.AddForce(dirVecR.normalized * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 4 * Player.instance.focusOrigin, ForceMode2D.Impulse);
 
         }
 
@@ -259,10 +262,11 @@ public class Enemy : MonoBehaviour
 
     public void OnHit(int dmg)
     {
-        if (health <= 0 || Bhealth <= 0)
-            return;
+        if (enemyName == "B" && Bhealth <= 0) return;
+        if (enemyName != "B" && health <= 0) return;
 
-        
+
+
         if (enemyName == "B")
         {
             Bhealth -= dmg;
@@ -286,19 +290,19 @@ public class Enemy : MonoBehaviour
 
         else if (health <= 0)
         {
-            //Player playerLogic = player.GetComponent<Player>();
-            //playerLogic.score += enemyScore
+            Player playerLogic = player.GetComponent<Player>();
+            playerLogic.score += enemyScore;
             int ran = enemyName == "B" ? 0 : Random.Range(0, 100);
             if (ran < 40)
             {
                 Debug.Log("Not Item");
             }
-            else if (ran < 50)
+            else if (ran < 48)
             {
                 GameObject itemPower = objectManager.MakeObj("ItemPower");
                 itemPower.transform.position = transform.position;
             }
-            else if (ran < 60)
+            else if (ran < 57)
             {
                 GameObject itemShield = objectManager.MakeObj("ItemShield");
                 itemShield.transform.position = transform.position;
