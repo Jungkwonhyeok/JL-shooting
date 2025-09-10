@@ -27,16 +27,20 @@ public class UI : MonoBehaviour
                 
                 break;
             case InfoType.Level:
-               
+                myText.text = string.Format("Lv.{0:F0}", Player.power);
                 break;
             case InfoType.Boss:
-                
+                float BossHealth = Enemy.Bhealth;
+                float BossmaxHealth = Enemy.MaxBhealth;
+                mySlider.value = BossHealth / BossmaxHealth;
                 break;
             case InfoType.Time:
                 
                 break;
             case InfoType.Health:
-               
+                float curHealth = Player.health;
+                float maxHealth = Player.maxhealth;
+                mySlider.value = curHealth / maxHealth;
                 break;
         }
     }

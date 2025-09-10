@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public float speed;
     public int health;
+    public static int MaxBhealth;
+    public static int Bhealth;
     public Sprite[] sprites;
 
     public float maxShotDelay;
@@ -37,12 +39,13 @@ public class Enemy : MonoBehaviour
             anim = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    public void OnEnable()
     {
-        switch (enemyName)
+        switch(enemyName)
         {
             case "B":
-                health = 3000;
+                MaxBhealth = 3000;
+                Bhealth = MaxBhealth;
                 Invoke("Stop", 2);
                 break;
             case "L":
@@ -256,22 +259,25 @@ public class Enemy : MonoBehaviour
 
     public void OnHit(int dmg)
     {
-        if (health <= 0)
+        if (health <= 0 || Bhealth <= 0)
             return;
 
-        health -= dmg;
+        
         if (enemyName == "B")
         {
+            Bhealth -= dmg;
             anim.SetTrigger("OnHit");
         }
-        else
+        
+        if(enemyName != "B")
         {
+            health -= dmg;
             spriteRenderer.sprite = sprites[1];
             Invoke("ReturnSprite", 0.1f);
 
         }
 
-        if (health <= 0 && enemyName == "B")
+        if (Bhealth <= 0 && enemyName == "B")
         {
             CancelInvoke();
             anim.SetTrigger("Die");

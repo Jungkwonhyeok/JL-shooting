@@ -16,11 +16,11 @@ public class Player : MonoBehaviour
     public int score;
     public float speed;
 
-    public int power;
+    public static int power;
     public int maxPower;
 
-    public float maxhealth;
-    public float health;
+    public static float maxhealth;
+    public static float health;
 
     public float gameTime;
     public float maxgameTime;
