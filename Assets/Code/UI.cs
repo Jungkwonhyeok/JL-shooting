@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    public enum InfoType { Score, Level, Boss, Time, Health }
+    public enum InfoType { Score, Level, Boss, Time, Health, BoomCool, FocusCool}
     public InfoType type;
 
     Text myText;
@@ -30,15 +30,11 @@ public class UI : MonoBehaviour
                 myText.text = string.Format("Lv.{0:F0}", Player.instance.power);
                 break;
             case InfoType.Boss:
-                if (Enemy.Instance == null) return;
+                if (Enemy.instance == null) return;
 
-                float BossHealth = Enemy.Instance.Bhealth;
-                float BossmaxHealth = Enemy.Instance.MaxBhealth;
+                float BossHealth = Enemy.instance.Bhealth;
+                float BossmaxHealth = Enemy.instance.MaxBhealth;
                 mySlider.value = BossHealth / BossmaxHealth;
-                if(BossHealth <= 0)
-                {
-                    gameObject.SetActive(false);
-                }
                 break;
             case InfoType.Time:
                 float curTime = Player.instance.gameTime;
@@ -49,6 +45,20 @@ public class UI : MonoBehaviour
                 float curHealth = Player.instance.health;
                 float maxHealth = Player.instance.maxhealth;
                 mySlider.value = curHealth / maxHealth;
+                break;
+            case InfoType.BoomCool:
+                float boomRemain = Player.instance.BoomCoolcnt();
+                if (boomRemain > 0)
+                    myText.text = $"{boomRemain:F0}";
+                else
+                    myText.text = " ";
+                break;
+            case InfoType.FocusCool:
+                float focusRemain = Player.instance.FocusCoolcnt();
+                if (focusRemain > 0)
+                    myText.text = $"{focusRemain:F0}";
+                else
+                    myText.text = " ";
                 break;
         }
     }

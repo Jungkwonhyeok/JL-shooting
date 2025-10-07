@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     float lastBoomTime;
     float lastFocusTime;
 
-
     void Awake()
     {
         instance = this;
@@ -63,7 +62,10 @@ public class Player : MonoBehaviour
     {
         health = maxhealth;
         lastBoomTime = -boomCooldown;
+        lastFocusTime = -focusCooldown;
     }
+
+
     void Update()
     {
         time += Time.deltaTime;
@@ -90,6 +92,17 @@ public class Player : MonoBehaviour
             lastFocusTime = Time.time;
         }
 
+    }
+    public float BoomCoolcnt()
+    {
+        float passedTime = Time.time - lastBoomTime;
+        return Mathf.Clamp(boomCooldown - passedTime, 0, boomCooldown);
+    }
+
+    public float FocusCoolcnt()
+    {
+        float passedTime = Time.time - lastFocusTime;
+        return Mathf.Clamp(focusCooldown - passedTime, 0, focusCooldown);
     }
 
     void Move()
@@ -239,6 +252,11 @@ public class Player : MonoBehaviour
             }
             collision.gameObject.SetActive(false); ;
         }
+        if (health <= 0 || gameTime <= 0)
+        {
+            gameManager.GameOver();
+        }
+                
     }
 
     private void OnTriggerExit2D(Collider2D collision)

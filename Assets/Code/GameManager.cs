@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public List<Spawn> spawnList;
     public int spawnIndex;
     public bool spawnEnd;
+    public GameObject gameOver;
+    public GameObject BossHp;
     void Awake()
     {
         spawnList = new List<Spawn>();
@@ -138,5 +140,15 @@ public class GameManager : MonoBehaviour
 
         die.transform.position = pos;
         dieLogic.StartDie(type);
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
+    }
+
+    public void BossSpown()
+    {
+        BossHp.SetActive(true);
     }
 }

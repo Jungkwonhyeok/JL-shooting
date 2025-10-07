@@ -1,9 +1,10 @@
 using NUnit.Framework.Internal.Execution;
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public static Enemy Instance;
+    public static Enemy instance;
 
     public string enemyName;
     public int enemyScore;
@@ -47,8 +48,10 @@ public class Enemy : MonoBehaviour
         switch(enemyName)
         {
             case "B":
+                instance = this;
                 MaxBhealth = 2000;
                 Bhealth = MaxBhealth;
+                StartCoroutine(CallBossSpawn());
                 Invoke("Stop", 2);
                 break;
             case "L":
@@ -63,7 +66,15 @@ public class Enemy : MonoBehaviour
         }
 
         rigid.linearVelocity = Vector2.down * speed * Player.instance.focusOrigin;
+    }
+    IEnumerator CallBossSpawn()
+    {
+        yield return null; // 한 프레임 대기
+        if (gameManager == null)
+            gameManager = FindAnyObjectByType<GameManager>();
 
+        if (gameManager != null)
+            gameManager.BossSpown();
     }
 
     void Stop()
@@ -214,7 +225,6 @@ public class Enemy : MonoBehaviour
     {
         if (enemyName == "B")
             return;
-
 
         Fire();
         Reload();
