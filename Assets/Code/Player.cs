@@ -363,6 +363,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        Rigidbody2D rigid = GetComponent<Rigidbody2D>();
+        rigid.linearVelocity = Vector2.zero;
+        rigid.angularVelocity = 0f;
+    }
 
 
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -150,5 +151,10 @@ public class GameManager : MonoBehaviour
     public void BossSpown()
     {
         BossHp.SetActive(true);
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene(3);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    public enum InfoType { Score, Level, Boss, Time, Health, BoomCool, FocusCool}
+    public enum InfoType { Score, Level, Boss, Time, Health, BoomCool, FocusCool, BoomCnt, FocusCnt}
     public InfoType type;
 
     Text myText;
@@ -20,6 +20,8 @@ public class UI : MonoBehaviour
 
     void LateUpdate()
     {
+        if (Player.instance == null) return;
+
         switch (type)
         {
             case InfoType.Score:
@@ -27,7 +29,11 @@ public class UI : MonoBehaviour
 
                 break;
             case InfoType.Level:
-                myText.text = string.Format("Lv.{0:F0}", Player.instance.power);
+                int level = Player.instance.power;
+                if (level != 4)
+                    myText.text = string.Format("Lv.{0:F0}",level);
+                else
+                    myText.text = "Lv.MAX";
                 break;
             case InfoType.Boss:
                 if (Enemy.instance == null) return;
@@ -59,6 +65,14 @@ public class UI : MonoBehaviour
                     myText.text = $"{focusRemain:F0}";
                 else
                     myText.text = " ";
+                break;
+            case InfoType.BoomCnt:
+                int boomCnt = Player.instance.BoomCount;
+                myText.text = $"{boomCnt}";
+                break;
+            case InfoType.FocusCnt:
+                int focusCnt = Player.instance.FocusCount;
+                myText.text  = $"{focusCnt}";
                 break;
         }
     }
