@@ -20,7 +20,6 @@ public class UI : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Player.instance == null) return;
 
         switch (type)
         {

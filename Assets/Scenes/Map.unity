@@ -910,8 +910,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  \uCEA1\uD2F4, \uCCAB \uC5EC\uC815\uC73C\uB85C 'Red Ocean'\uC73C\uB85C
-    \uAC00\uC2DC\uC8E0."
+  m_text: "  \uCEA1\uD2F4, \uC801\uC744 \uD53C\uD574 'Red Ocean'\uC5D0\uC11C \n\uAE30\uB2E4\uB9AC\uACA0\uC2B5\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 60953e3eeb67f8d4d889fa399a33d319, type: 2}
   m_sharedMaterial: {fileID: 2097752425428580433, guid: 60953e3eeb67f8d4d889fa399a33d319, type: 2}
@@ -938,8 +937,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 7
+  m_fontSizeBase: 7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9117,8 +9116,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Red Ocean
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4afc2bbcdb350404d955eb8175d4dccd, type: 2}
-  m_sharedMaterial: {fileID: 1744646510684880541, guid: 4afc2bbcdb350404d955eb8175d4dccd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ccf50aec27b9da34a985ab6451b20088, type: 2}
+  m_sharedMaterial: {fileID: 7929469091991349558, guid: ccf50aec27b9da34a985ab6451b20088, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9148,7 +9147,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
