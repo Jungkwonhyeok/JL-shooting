@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
                     if (health == maxhealth)
                         return;
                     else
-                        health += 5;
+                        health += 7;
                     break;
                 case "Shield":
                     OnShield();

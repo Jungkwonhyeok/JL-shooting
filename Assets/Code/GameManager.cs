@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOver.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void BossSpown()
@@ -156,5 +157,6 @@ public class GameManager : MonoBehaviour
     public void GameRetry()
     {
         SceneManager.LoadScene(3);
+        Time.timeScale = 1f;
     }
 }
