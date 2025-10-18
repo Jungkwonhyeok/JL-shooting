@@ -4,6 +4,7 @@ using System.IO;
 using Unity.VisualScripting;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,13 +22,35 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     public GameObject gameOver;
     public GameObject BossHp;
+
+    public static GameManager Instance;
+    public static int FinalScore;
+    public int currentScore = 0;
+
+    
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         spawnList = new List<Spawn>();
 
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
         ReadSpawnFile();
+    }
+
+
+
+    public void AddScore(int value)
+    {
+        currentScore += value;
     }
 
     void ReadSpawnFile()
@@ -147,6 +170,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0f;
+        FinalScore = Player.instance.score;
     }
 
     public void BossSpown()
