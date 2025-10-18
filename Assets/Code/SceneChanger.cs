@@ -44,6 +44,5 @@ public class SceneChanger : MonoBehaviour
     public void GoGame()
     {
         SceneManager.LoadScene("JL-shooting");
-        Time.timeScale = 1f;
     }
 }

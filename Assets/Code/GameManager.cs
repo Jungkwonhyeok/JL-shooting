@@ -183,9 +183,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
         Time.timeScale = 1f;
     }
-
-    public void MapBack()
-    {
-        SceneManager.LoadScene(2);
-    }
 }
