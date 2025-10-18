@@ -17,10 +17,6 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("StartScene");
     }
 
-    public void ResultSceneChanger()
-    {
-        SceneManager.LoadScene("ResultScene");
-    }
     // 게임을 종료하는 함수
     public void QuitGame()
     {

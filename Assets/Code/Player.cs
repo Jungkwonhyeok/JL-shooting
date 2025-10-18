@@ -254,10 +254,6 @@ public class Player : MonoBehaviour
         }
         if (health <= 0 || gameTime <= 0)
         {
-            if  (GameDataManager.instance != null)
-            {
-                GameDataManager.instance.SaveScore(score);
-            }
             gameManager.GameOver();
         }
                 
