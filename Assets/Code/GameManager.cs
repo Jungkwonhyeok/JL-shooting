@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using UnityEngine;
 using System.IO;
 using Unity.VisualScripting;
@@ -27,25 +27,23 @@ public class GameManager : MonoBehaviour
     public static int FinalScore;
     public int currentScore = 0;
 
-    
+
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Setting();
+    }
+
+    void Setting()
+    {
+        objectManager = FindAnyObjectByType<ObjectManager>();
+
         spawnList = new List<Spawn>();
 
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
+
         ReadSpawnFile();
     }
-
 
 
     public void AddScore(int value)
@@ -55,16 +53,16 @@ public class GameManager : MonoBehaviour
 
     void ReadSpawnFile()
     {
-        //º¯¼ö ÃÊ±âÈ­
+        //ë³€ìˆ˜ ì´ˆê¸°í™”
         spawnList.Clear();
         spawnIndex = 0;
         spawnEnd = false;
 
-        //½ºÆù ÆÄÀÏ ÀĞ±â
+        //ìŠ¤í° íŒŒì¼ ì½ê¸°
         TextAsset textFile = Resources.Load("Stage 1") as TextAsset;
         StringReader stringReader = new StringReader(textFile.text);
 
-        //ÇÑ ÁÙ¾¿ µ¥ÀÌÅÍ ÀúÀå
+        //í•œ ì¤„ì”© ë°ì´í„° ì €ì¥
         while (stringReader != null)
         {
             string line = stringReader.ReadLine();
@@ -73,7 +71,7 @@ public class GameManager : MonoBehaviour
             if (line == null)
                 break;
 
-            //¸®½ºÆù µ¥ÀÌÅÍ »ı¼º
+            //ë¦¬ìŠ¤í° ë°ì´í„° ìƒì„±
             Spawn spawnData = new Spawn();
             spawnData.delay = float.Parse(line.Split(',')[0]);
             spawnData.type = line.Split(',')[1];
@@ -81,10 +79,10 @@ public class GameManager : MonoBehaviour
             spawnList.Add(spawnData);
         }
 
-        //ÅØ½ºÆ® ÆÄÀÏ ´İ±â
+        //í…ìŠ¤íŠ¸ íŒŒì¼ ë‹«ê¸°
         stringReader.Close();
 
-        //Ã³¼­¹øÂ° ½ºÆù µô·¹ÀÌ Àû¿ë
+        //ì²˜ì„œë²ˆì§¸ ìŠ¤í° ë”œë ˆì´ ì ìš©
         nextSpawnDelay = spawnList[0].delay;
 
     }
@@ -145,7 +143,7 @@ public class GameManager : MonoBehaviour
             rigid.linearVelocity = new Vector2(0, -speed);
         }
 
-        //¸®½ºÆ® ÀÎµ¦½º Áõ°¡
+        //ë¦¬ìŠ¤íŠ¸ ì¸ë±ìŠ¤ ì¦ê°€
         spawnIndex++;
         if (spawnIndex == spawnList.Count)
         {
@@ -153,7 +151,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        //´ÙÀ½ ¸®½ºÆù µô·¹ÀÌ °»½Å
+        //ë‹¤ìŒ ë¦¬ìŠ¤í° ë”œë ˆì´ ê°±ì‹ 
         nextSpawnDelay = spawnList[spawnIndex].delay;
     }
 
@@ -175,13 +173,16 @@ public class GameManager : MonoBehaviour
 
     public void BossSpown()
     {
-        BossHp.SetActive(true);
+        if (BossHp != null)
+            BossHp.SetActive(true);
     }
 
     public void GameRetry()
     {
         SceneManager.LoadScene(3);
         Time.timeScale = 1f;
+
+        Setting();
     }
 
     public void MapBack()

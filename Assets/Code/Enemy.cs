@@ -1,4 +1,4 @@
-using NUnit.Framework.Internal.Execution;
+ï»¿using NUnit.Framework.Internal.Execution;
 using UnityEngine;
 using System.Collections;
 
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 
     public void OnEnable()
     {
-        switch(enemyName)
+        switch (enemyName)
         {
             case "B":
                 instance = this;
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator CallBossSpawn()
     {
-        yield return null; // ÇÑ ÇÁ·¹ÀÓ ´ë±â
+        yield return null; // í•œ í”„ë ˆìž„ ëŒ€ê¸°
         if (gameManager == null)
             gameManager = FindAnyObjectByType<GameManager>();
 
@@ -282,8 +282,8 @@ public class Enemy : MonoBehaviour
             Bhealth -= dmg;
             anim.SetTrigger("OnHit");
         }
-        
-        if(enemyName != "B")
+
+        if (enemyName != "B")
         {
             health -= dmg;
             spriteRenderer.sprite = sprites[1];

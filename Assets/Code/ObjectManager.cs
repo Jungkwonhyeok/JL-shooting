@@ -42,6 +42,7 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bulletBossB;
     GameObject[] die;
 
+    [SerializeField]
     GameObject[] targetPool;
 
     void Awake()
@@ -187,72 +188,69 @@ public class ObjectManager : MonoBehaviour
 
     public GameObject MakeObj(string type)
     {
-
         switch (type)
         {
-            case "EnemyB":
-                targetPool = enemyB;
-                break;
-            case "EnemyL":
-                targetPool = enemyL;
-                break;
-            case "EnemyM":
-                targetPool = enemyM;
-                break;
-            case "EnemyS":
-                targetPool = enemyS;
-                break;
-            case "BulletPlayerA":
-                targetPool = bulletPlayerA;
-                break;
-            case "ItemHP":
-                targetPool = itemHP;
-                break;
-            case "ItemTime":
-                targetPool = itemTime;
-                break;
-            case "ItemPower":
-                targetPool = itemPower;
-                break;
-            case "ItemShield":
-                targetPool = itemShield;
-                break;
-            case "BulletPlayerB":
-                targetPool = bulletPlayerB;
-                break;
-            case "BulletPlayerC":
-                targetPool = bulletPlayerC;
-                break;
-            case "BulletPlayerD":
-                targetPool = bulletPlayerD;
-                break;
-            case "BulletEnemyA":
-                targetPool = bulletEnemyA;
-                break;
-            case "BulletEnemyB":
-                targetPool = bulletEnemyB;
-                break;
-            case "BulletBossA":
-                targetPool = bulletBossA;
-                break;
-            case "BulletBossB":
-                targetPool = bulletBossB;
-                break;
-            case "Die":
-                targetPool = die;
-                break;
-
+            case "EnemyB": targetPool = enemyB; break;
+            case "EnemyL": targetPool = enemyL; break;
+            case "EnemyM": targetPool = enemyM; break;
+            case "EnemyS": targetPool = enemyS; break;
+            case "BulletPlayerA": targetPool = bulletPlayerA; break;
+            case "ItemHP": targetPool = itemHP; break;
+            case "ItemTime": targetPool = itemTime; break;
+            case "ItemPower": targetPool = itemPower; break;
+            case "ItemShield": targetPool = itemShield; break;
+            case "BulletPlayerB": targetPool = bulletPlayerB; break;
+            case "BulletPlayerC": targetPool = bulletPlayerC; break;
+            case "BulletPlayerD": targetPool = bulletPlayerD; break;
+            case "BulletEnemyA": targetPool = bulletEnemyA; break;
+            case "BulletEnemyB": targetPool = bulletEnemyB; break;
+            case "BulletBossA": targetPool = bulletBossA; break;
+            case "BulletBossB": targetPool = bulletBossB; break;
+            case "Die": targetPool = die; break;
+            default: return null;
         }
 
-        for (int index = 0; index < targetPool.Length; index++)
+        for (int i = 0; i < targetPool.Length; i++)
         {
-            if (!targetPool[index].activeSelf)
+            if (targetPool[i] != null && !targetPool[i].activeSelf)
             {
-                targetPool[index].SetActive(true);
-                return targetPool[index];
+                targetPool[i].SetActive(true);
+                return targetPool[i];
             }
         }
 
+        GameObject prefab = GetPrefabByType(type);
+        if (prefab != null)
+        {
+            GameObject newObj = Instantiate(prefab);
+            return newObj;
+        }
+
         return null;
+    }
+
+    private GameObject GetPrefabByType(string type)
+    {
+        switch (type)
+        {
+            case "EnemyB": return enemyBPrefab;
+            case "EnemyL": return enemyLPrefab;
+            case "EnemyM": return enemyMPrefab;
+            case "EnemyS": return enemySPrefab;
+            case "BulletPlayerA": return bulletPlayerAPrefab;
+            case "ItemHP": return itemHPPrefab;
+            case "ItemTime": return itemTimePrefab;
+            case "ItemPower": return itemPowerPrefab;
+            case "ItemShield": return itemShieldPrefab;
+            case "BulletPlayerB": return bulletPlayerBPrefab;
+            case "BulletPlayerC": return bulletPlayerCPrefab;
+            case "BulletPlayerD": return bulletPlayerDPrefab;
+            case "BulletEnemyA": return bulletEnemyAPrefab;
+            case "BulletEnemyB": return bulletEnemyBPrefab;
+            case "BulletBossA": return bulletBossAPrefab;
+            case "BulletBossB": return bulletBossBPrefab;
+            case "Die": return diePrefab;
+            default: return null;
+        }
     }
 }
