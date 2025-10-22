@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework.Internal.Execution;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -273,6 +274,7 @@ public class Enemy : MonoBehaviour
     public void OnHit(int dmg)
     {
         if (enemyName == "B" && Bhealth <= 0) return;
+
         if (enemyName != "B" && health <= 0) return;
 
 
@@ -296,6 +298,7 @@ public class Enemy : MonoBehaviour
             CancelInvoke();
             anim.SetTrigger("Die");
             Invoke("Disable", 1f);
+            Invoke("ClearResultScene", 3f);
         }
 
         else if (health <= 0)
@@ -358,5 +361,10 @@ public class Enemy : MonoBehaviour
     void Disable()
     {
         gameObject.SetActive(false);
+    }
+
+    void ClearResultScene()
+    {
+        SceneManager.LoadScene(5);
     }
 }

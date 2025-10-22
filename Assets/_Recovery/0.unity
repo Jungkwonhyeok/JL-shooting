@@ -7648,6 +7648,7 @@ MonoBehaviour:
   bulletBossAPrefab: {fileID: 8651903800703064233, guid: 354e5372d3a787b4283bae205177bde7, type: 3}
   bulletBossBPrefab: {fileID: 8651903800703064233, guid: 4a865f1f7685081499ff4a7e74a5635a, type: 3}
   diePrefab: {fileID: 2620978426153364258, guid: 54268b7f9721c424fa62d784df93a68a, type: 3}
+  targetPool: []
 --- !u!4 &1031682086
 Transform:
   m_ObjectHideFlags: 0
@@ -10458,6 +10459,7 @@ MonoBehaviour:
   spawnEnd: 0
   gameOver: {fileID: 911336883}
   BossHp: {fileID: 752290046}
+  currentScore: 0
 --- !u!4 &1491850916
 Transform:
   m_ObjectHideFlags: 0

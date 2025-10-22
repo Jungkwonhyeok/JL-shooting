@@ -10,6 +10,7 @@ public class SceneChanger : MonoBehaviour
     public void StartSceneChange()
     {
         SceneManager.LoadScene("Lobby");
+        Time.timeScale = 1f;
     }
 
     public void LobbySceneChange()
