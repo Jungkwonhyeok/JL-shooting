@@ -20,7 +20,7 @@ public class SceneChanger : MonoBehaviour
 
     public void ResultSceneChanger()
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("fall");
     }
     // 게임을 종료하는 함수
     public void QuitGame()

@@ -9,7 +9,7 @@ public class Result : MonoBehaviour
 
     void Start()
     {
-        
+
         // GameDataManager에서 점수 불러오기
         if (GameDataManager.instance != null)
         {
@@ -21,16 +21,5 @@ public class Result : MonoBehaviour
             txtScore.text = "0";
         }
         scoreText.text = GameManager.FinalScore.ToString();
-}
-
-    // 버튼 연결용 메서드
-    public void OnClickBack()
-    {
-        SceneManager.LoadScene("Lobby");
-    }
-
-    public void OnClickHome()
-    {
-        SceneManager.LoadScene("StartScene");
     }
 }

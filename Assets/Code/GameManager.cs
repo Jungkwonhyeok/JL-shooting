@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0f;
-        FinalScore = Player.instance.score;
+        Scoresave();
     }
 
     public void BossSpown()
@@ -188,5 +188,10 @@ public class GameManager : MonoBehaviour
     public void MapBack()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void Scoresave()
+    {
+        FinalScore = Player.instance.score;
     }
 }

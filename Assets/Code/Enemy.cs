@@ -293,8 +293,11 @@ public class Enemy : MonoBehaviour
 
         }
 
+        Player playerLogic = player.GetComponent<Player>();
+
         if (Bhealth <= 0 && enemyName == "B")
         {
+            playerLogic.score += enemyScore;
             CancelInvoke();
             anim.SetTrigger("Die");
             Invoke("Disable", 1f);
@@ -303,7 +306,6 @@ public class Enemy : MonoBehaviour
 
         else if (health <= 0)
         {
-            Player playerLogic = player.GetComponent<Player>();
             playerLogic.score += enemyScore;
             int ran = enemyName == "B" ? 0 : Random.Range(0, 100);
             if (ran < 40)
@@ -365,6 +367,16 @@ public class Enemy : MonoBehaviour
 
     void ClearResultScene()
     {
+        // 점수 저장
+        if (GameDataManager.instance != null)
+        {
+            GameDataManager.instance.SaveScore(Player.instance.score);
+        }
+
+        GameManager.FinalScore = Player.instance.score;
+
+        // 결과 화면으로 이동
         SceneManager.LoadScene(5);
     }
+
 }
