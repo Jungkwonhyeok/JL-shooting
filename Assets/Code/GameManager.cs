@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public bool spawnEnd;
     public GameObject gameOver;
     public GameObject BossHp;
+    public bool GamePlay;
 
     public static GameManager Instance;
     public static int FinalScore;
@@ -166,6 +167,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        GamePlay = false;
         gameOver.SetActive(true);
         Time.timeScale = 0f;
         Scoresave();
@@ -181,6 +183,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(3);
         Time.timeScale = 1f;
+        GamePlay = true;
 
         Setting();
     }

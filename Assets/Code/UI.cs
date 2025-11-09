@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,12 +10,12 @@ public class UI : MonoBehaviour
     public enum InfoType { Score, Level, Boss, Time, Health, BoomCool, FocusCool, BoomCnt, FocusCnt}
     public InfoType type;
 
-    Text myText;
+    TextMeshProUGUI myText;
     Slider mySlider;
 
     void Awake()
     {
-        myText = GetComponent<Text>();
+        myText = GetComponent<TextMeshProUGUI>();
         mySlider = GetComponent<Slider>();
     }
 

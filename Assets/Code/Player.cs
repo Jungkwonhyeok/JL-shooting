@@ -2,7 +2,6 @@ using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem.Switch;
 using UnityEngine.SocialPlatforms.Impl;
-using static UnityEditor.Progress;
 using System.Collections;
 
 public class Player : MonoBehaviour
@@ -78,14 +77,14 @@ public class Player : MonoBehaviour
             health = maxhealth;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown && BoomCount != 0)
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time - lastBoomTime >= boomCooldown && BoomCount != 0 && gameManager.GamePlay == true)
         {
             BoomCount--;
             Boom();
             lastBoomTime = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !isFocusing && Time.time - lastFocusTime >= focusCooldown && FocusCount != 0)
+        if (Input.GetKeyDown(KeyCode.E) && !isFocusing && Time.time - lastFocusTime >= focusCooldown && FocusCount != 0 && gameManager.GamePlay == true)
         {
             FocusCount--;
             StartCoroutine(FocusMode());

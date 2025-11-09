@@ -376,7 +376,7 @@ public class Enemy : MonoBehaviour
         GameManager.FinalScore = Player.instance.score;
 
         // 결과 화면으로 이동
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("Clear");
     }
 
 }

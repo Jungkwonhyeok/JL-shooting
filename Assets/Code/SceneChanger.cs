@@ -47,4 +47,25 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene("JL-shooting");
         Time.timeScale = 1f;
     }
+
+    public void InfoSceneChanger()
+    {
+        SceneManager.LoadScene(6);
+    }
+
+    public void InfoNextChanger()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextIndex = currentIndex + 1;
+
+        SceneManager.LoadScene(nextIndex);
+    }
+
+    public void InfoBackChanger()
+    {
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int previousIndex = currentIndex - 1;
+
+        SceneManager.LoadScene(previousIndex);
+    }
 }
