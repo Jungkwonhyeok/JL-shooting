@@ -158,15 +158,21 @@ public class GameManager : MonoBehaviour
 
     public void CallDie(Vector3 pos, string type)
     {
+        DieAudio();
         GameObject die = objectManager.MakeObj("Die");
         Die dieLogic = die.GetComponent<Die>();
 
         die.transform.position = pos;
         dieLogic.StartDie(type);
     }
+    void DieAudio()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Destroy);
+    }
 
     public void GameOver()
     {
+        AudioManager.instance.StopBgm();
         GamePlay = false;
         gameOver.SetActive(true);
         Time.timeScale = 0f;
@@ -175,22 +181,9 @@ public class GameManager : MonoBehaviour
 
     public void BossSpown()
     {
+        AudioManager.instance.PlayBgm(AudioManager.Bgm.Boss);
         if (BossHp != null)
             BossHp.SetActive(true);
-    }
-
-    public void GameRetry()
-    {
-        SceneManager.LoadScene(3);
-        Time.timeScale = 1f;
-        GamePlay = true;
-
-        Setting();
-    }
-
-    public void MapBack()
-    {
-        SceneManager.LoadScene(2);
     }
 
     public void Scoresave()

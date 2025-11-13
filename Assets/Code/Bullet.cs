@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Bullet: MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     public int dmg;
     public bool isRotate;
@@ -14,9 +14,15 @@ public class Bullet: MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BorderBullet")
-        {
-            gameObject.SetActive(false);
-        }
+        if (gameObject.tag == "EnemyBullet")
+            if (collision.gameObject.tag == "BorderBullet" || collision.gameObject.tag == "Player")
+            {
+                gameObject.SetActive(false);
+            }
+        else if (gameObject.tag == "PlayerBullet")
+            if (collision.gameObject.tag == "BorderBullet")
+            {
+                gameObject.SetActive(false);
+            }
     }
 }

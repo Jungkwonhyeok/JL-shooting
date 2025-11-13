@@ -299,6 +299,7 @@ public class Enemy : MonoBehaviour
         {
             playerLogic.score += enemyScore;
             CancelInvoke();
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Destroy);
             anim.SetTrigger("Die");
             Invoke("Disable", 1f);
             Invoke("ClearResultScene", 3f);
@@ -367,6 +368,7 @@ public class Enemy : MonoBehaviour
 
     void ClearResultScene()
     {
+        AudioManager.instance.StopBgm();
         // 점수 저장
         if (GameDataManager.instance != null)
         {
@@ -375,6 +377,8 @@ public class Enemy : MonoBehaviour
 
         GameManager.FinalScore = Player.instance.score;
 
+
+        AudioManager.instance.PlayBgm(AudioManager.Bgm.Lobby);
         // 결과 화면으로 이동
         SceneManager.LoadScene("Clear");
     }

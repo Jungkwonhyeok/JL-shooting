@@ -53,9 +53,12 @@ public class Player : MonoBehaviour
     float lastBoomTime;
     float lastFocusTime;
 
+    Animator anim;
+
     void Awake()
     {
         instance = this;
+        anim = GetComponent<Animator>();
     }
     void Start()
     {
@@ -118,6 +121,14 @@ public class Player : MonoBehaviour
         transform.position = curPos + nextPos;
     }
 
+    void LBulletAudio()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.LBullet);
+    }
+    void SBulletAudio()
+    {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.SBullet);
+    }
     void Fire()
     {
         if (!Input.GetButton("Fire1"))
@@ -128,6 +139,7 @@ public class Player : MonoBehaviour
         switch (power)
         {
             case 1:
+                SBulletAudio();
                 GameObject bullet = objectManager.MakeObj("BulletPlayerA");
                 bullet.transform.position = transform.position;
 
@@ -136,6 +148,7 @@ public class Player : MonoBehaviour
                 break;
 
             case 2:
+                SBulletAudio();
                 GameObject bulletR = objectManager.MakeObj("BulletPlayerA");
                 bulletR.transform.position = transform.position + Vector3.right * 0.1f;
                 GameObject bulletL = objectManager.MakeObj("BulletPlayerA");
@@ -148,8 +161,10 @@ public class Player : MonoBehaviour
                 break;
 
             case 3:
+                SBulletAudio();
                 GameObject bulletRR = objectManager.MakeObj("BulletPlayerA");
                 bulletRR.transform.position = transform.position + Vector3.right * 0.35f;
+                LBulletAudio();
                 GameObject bulletCC = objectManager.MakeObj("BulletPlayerB");
                 bulletCC.transform.position = transform.position;
                 GameObject bulletLL = objectManager.MakeObj("BulletPlayerA");
@@ -164,8 +179,10 @@ public class Player : MonoBehaviour
                 break;
 
             case 4:
+                SBulletAudio();
                 GameObject bulletRRR = objectManager.MakeObj("BulletPlayerC");
                 bulletRRR.transform.position = transform.position + Vector3.right * 0.35f;
+                LBulletAudio();
                 GameObject bulletCCC = objectManager.MakeObj("BulletPlayerD");
                 bulletCCC.transform.position = transform.position;
                 GameObject bulletLLL = objectManager.MakeObj("BulletPlayerC");
@@ -215,14 +232,18 @@ public class Player : MonoBehaviour
         {
             if (shield == true)
                 return;
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
             health -= Time.deltaTime * 10;
+            anim.SetTrigger("OnHit");
         }
         else if (collision.gameObject.tag == "EnemyBullet")
         {
             if (shield == true)
                 return;
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Hit);
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             health -= bullet.dmg;
+            anim.SetTrigger("OnHit");
         }
 
         else if (collision.gameObject.tag == "Item")
@@ -372,6 +393,4 @@ public class Player : MonoBehaviour
         rigid.linearVelocity = Vector2.zero;
         rigid.angularVelocity = 0f;
     }
-
-
 }
