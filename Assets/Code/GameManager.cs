@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Setting();
+        Instance = this;
     }
 
     void Setting()
@@ -87,6 +88,8 @@ public class GameManager : MonoBehaviour
         nextSpawnDelay = spawnList[0].delay;
 
     }
+
+    
     void Update()
     {
         curSpawnDelay += Time.deltaTime;
@@ -189,5 +192,23 @@ public class GameManager : MonoBehaviour
     public void Scoresave()
     {
         FinalScore = Player.instance.score;
+    }
+
+    public void JumpToSpawnIndex(int index)
+    {
+        if (index < 0 || index >= spawnList.Count)
+            return;
+
+        spawnIndex = index;
+        nextSpawnDelay = spawnList[spawnIndex].delay;
+        curSpawnDelay = 0; // 즉시 다음 스폰 진행하도록 초기화
+    }
+
+    public void DisableByTag(string tag)
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tag))
+        {
+            obj.SetActive(false);
+        }
     }
 }

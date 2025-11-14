@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
 
         rigid.linearVelocity = Vector2.down * speed * Player.instance.focusOrigin;
     }
-    IEnumerator CallBossSpawn()
+    public IEnumerator CallBossSpawn()
     {
         yield return null; // 한 프레임 대기
         if (gameManager == null)

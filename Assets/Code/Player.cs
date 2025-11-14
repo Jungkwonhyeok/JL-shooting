@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     bool isFocusing;
     float lastBoomTime;
     float lastFocusTime;
+    int countF3 = 1;
 
     Animator anim;
 
@@ -94,7 +95,25 @@ public class Player : MonoBehaviour
             lastFocusTime = Time.time;
         }
 
+        if (Input.GetKeyDown(KeyCode.F1) && gameManager.GamePlay == true && !(power == maxPower))
+        {
+            power++;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F2) && gameManager.GamePlay == true)
+        {
+            power = maxPower;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3) && gameManager.GamePlay == true && countF3 > 0)
+        {
+            countF3--;
+            GameManager.Instance.JumpToSpawnIndex(88);
+            GameManager.Instance.DisableByTag("Enemy");
+            GameManager.Instance.DisableByTag("EnemyBullet");
+        }
     }
+
     public float BoomCoolcnt()
     {
         float passedTime = Time.time - lastBoomTime;
