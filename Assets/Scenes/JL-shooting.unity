@@ -1202,6 +1202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 148384299}
   - component: {fileID: 148384300}
+  - component: {fileID: 148384301}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0"
   m_TagString: Untagged
@@ -1282,6 +1283,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &148384301
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148384298}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &150381162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 206490064}
   - component: {fileID: 206490065}
+  - component: {fileID: 206490066}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (10)"
   m_TagString: Untagged
@@ -1778,6 +1802,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &206490066
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206490063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &226633713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,6 +2629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315350139}
   - component: {fileID: 315350140}
+  - component: {fileID: 315350141}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (11)"
   m_TagString: Untagged
@@ -2663,6 +2710,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &315350141
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315350138}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &334168201
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,6 +2848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337484787}
   - component: {fileID: 337484788}
+  - component: {fileID: 337484789}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (6)"
   m_TagString: Untagged
@@ -2859,6 +2929,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &337484789
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337484786}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &339425832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3701,6 +3793,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504859400}
   - component: {fileID: 504859401}
+  - component: {fileID: 504859402}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (4)"
   m_TagString: Untagged
@@ -3781,6 +3874,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &504859402
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504859399}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &515225305
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,6 +4434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629904943}
   - component: {fileID: 629904944}
+  - component: {fileID: 629904945}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (7)"
   m_TagString: Untagged
@@ -4399,6 +4515,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &629904945
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629904942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &637611991
 GameObject:
   m_ObjectHideFlags: 0
@@ -7292,6 +7430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1026607697}
   - component: {fileID: 1026607698}
+  - component: {fileID: 1026607699}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (1)"
   m_TagString: Untagged
@@ -7372,6 +7511,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1026607699
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026607696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1030822380
 GameObject:
   m_ObjectHideFlags: 0
@@ -8951,6 +9112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1166940791}
   - component: {fileID: 1166940792}
+  - component: {fileID: 1166940793}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (12)"
   m_TagString: Untagged
@@ -9031,6 +9193,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1166940793
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166940790}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1189505511
 GameObject:
   m_ObjectHideFlags: 0
@@ -11246,6 +11430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563509874}
   - component: {fileID: 1563509875}
+  - component: {fileID: 1563509876}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (8)"
   m_TagString: Untagged
@@ -11326,6 +11511,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1563509876
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563509873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1568768575
 GameObject:
   m_ObjectHideFlags: 0
@@ -11353,7 +11560,7 @@ Transform:
   m_GameObject: {fileID: 1568768575}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.884, y: -0.089, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11684,6 +11891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601254370}
   - component: {fileID: 1601254371}
+  - component: {fileID: 1601254372}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (3)"
   m_TagString: Untagged
@@ -11764,6 +11972,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1601254372
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601254369}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1603061696
 GameObject:
   m_ObjectHideFlags: 0
@@ -13437,6 +13667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1720893047}
   - component: {fileID: 1720893048}
+  - component: {fileID: 1720893049}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (5)"
   m_TagString: Untagged
@@ -13517,6 +13748,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1720893049
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720893046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1739622712
 GameObject:
   m_ObjectHideFlags: 0
@@ -14234,6 +14487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795691244}
   - component: {fileID: 1795691245}
+  - component: {fileID: 1795691246}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (2)"
   m_TagString: Untagged
@@ -14314,6 +14568,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1795691246
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795691243}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aaef3b2c63e3e4aaaaabb60dc127d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1804499635
 GameObject:
   m_ObjectHideFlags: 0
@@ -16967,6 +17243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2145171263}
   - component: {fileID: 2145171264}
+  - component: {fileID: 2145171265}
   m_Layer: 0
   m_Name: "ChatGPT Image 2025\uB144 8\uC6D4 31\uC77C \uC624\uC804 01_43_20_0 (9)"
   m_TagString: Untagged
@@ -17047,6 +17324,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2145171265
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145171262}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 455f7165a2f8305448c375ab4f8a1ff1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &130940517132760373
 PrefabInstance:
   m_ObjectHideFlags: 0
