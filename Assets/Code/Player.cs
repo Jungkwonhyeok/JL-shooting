@@ -112,6 +112,12 @@ public class Player : MonoBehaviour
             GameManager.Instance.DisableByTag("Enemy");
             GameManager.Instance.DisableByTag("EnemyBullet");
         }
+
+        if (Input.GetKeyDown(KeyCode.F4) && gameManager.GamePlay == true &&gameManager.Bossspawn ==true)
+        {
+            Enemy.instance.Bhealth = 0;
+            Enemy.instance.BossDie();
+        }
     }
 
     public float BoomCoolcnt()

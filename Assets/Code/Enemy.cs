@@ -271,6 +271,19 @@ public class Enemy : MonoBehaviour
         curShotDelay += Time.deltaTime;
     }
 
+    public void BossDie()
+    {
+        Player playerLogic = player.GetComponent<Player>();
+
+        playerLogic.score += enemyScore;
+        CancelInvoke();
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Destroy);
+        anim.SetTrigger("Die");
+        Invoke("Disable", 1f);
+        Invoke("ClearResultScene", 3.8f);
+        gameManager.Bossspawn = false;
+    }
+
     public void OnHit(int dmg)
     {
         if (enemyName == "B" && Bhealth <= 0) return;
@@ -297,12 +310,7 @@ public class Enemy : MonoBehaviour
 
         if (Bhealth <= 0 && enemyName == "B")
         {
-            playerLogic.score += enemyScore;
-            CancelInvoke();
-            AudioManager.instance.PlaySfx(AudioManager.Sfx.Destroy);
-            anim.SetTrigger("Die");
-            Invoke("Disable", 1f);
-            Invoke("ClearResultScene", 3f);
+            BossDie();
         }
 
         else if (health <= 0)
@@ -364,6 +372,8 @@ public class Enemy : MonoBehaviour
     void Disable()
     {
         gameObject.SetActive(false);
+
+        GameManager.Instance.StageClear();
     }
 
     void ClearResultScene()

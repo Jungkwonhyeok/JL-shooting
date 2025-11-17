@@ -8,6 +8,9 @@ using JetBrains.Annotations;
 
 public class GameManager : MonoBehaviour
 {
+    public Animator StageAnim;
+    public Animator ClearAnim;
+
     public string[] enemyObjs;
     public Transform[] spawnPoint;
 
@@ -20,6 +23,7 @@ public class GameManager : MonoBehaviour
     public List<Spawn> spawnList;
     public int spawnIndex;
     public bool spawnEnd;
+    public bool Bossspawn;
     public GameObject gameOver;
     public GameObject BossHp;
     public bool GamePlay;
@@ -43,8 +47,8 @@ public class GameManager : MonoBehaviour
 
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL", "EnemyB" };
 
-
-        ReadSpawnFile();
+        StageStart();
+        
     }
 
 
@@ -53,6 +57,16 @@ public class GameManager : MonoBehaviour
         currentScore += value;
     }
 
+    public void StageStart()
+    {
+        StageAnim.SetTrigger("On");
+        ReadSpawnFile();
+    }
+
+    public void StageClear()
+    {
+        ClearAnim.SetTrigger("On");
+    }
     void ReadSpawnFile()
     {
         //변수 초기화
@@ -186,7 +200,10 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.PlayBgm(AudioManager.Bgm.Boss);
         if (BossHp != null)
+        {
             BossHp.SetActive(true);
+            Bossspawn = true;
+        }
     }
 
     public void Scoresave()
